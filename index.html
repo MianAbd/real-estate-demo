@@ -1,20 +1,710 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Prime Estate | Real Estate</title>
-  <meta name="description" content="Prime Estate - Professional real estate properties and services.">
-  <link rel="stylesheet" href="style.css">
+
+  <meta name="description"
+    content="Prime Estate - Professional real estate services and properties.">
+
+  <style>
+    /* =========================
+       RESET
+    ========================= */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f7f8fa;
+      color: #172033;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1180px;
+      margin: auto;
+    }
+
+
+    /* =========================
+       NAVBAR
+    ========================= */
+
+    .navbar {
+      background: #ffffff;
+      border-bottom: 1px solid #e9ecf1;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .nav-container {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+    }
+
+    .logo {
+      font-size: 27px;
+      font-weight: 800;
+      color: #172033;
+    }
+
+    .logo span,
+    footer span {
+      color: #2d6cdf;
+    }
+
+    nav {
+      display: flex;
+      gap: 28px;
+    }
+
+    nav a {
+      color: #536074;
+      font-size: 15px;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #2d6cdf;
+    }
+
+    .nav-btn {
+      background: #2d6cdf;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      min-height: 650px;
+      position: relative;
+
+      background:
+        linear-gradient(
+          rgba(10, 25, 50, 0.68),
+          rgba(10, 25, 50, 0.68)
+        ),
+        url("https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1800&q=85");
+
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-content {
+      color: white;
+      max-width: 760px;
+      padding: 100px 0;
+    }
+
+    .eyebrow {
+      color: #2d6cdf;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      margin-bottom: 14px;
+    }
+
+    .hero .eyebrow {
+      color: #8db7ff;
+    }
+
+    .hero h1 {
+      font-size: clamp(42px, 6vw, 72px);
+      line-height: 1.05;
+      margin-bottom: 25px;
+    }
+
+    .hero-text {
+      font-size: 18px;
+      max-width: 650px;
+      color: #e5eaf2;
+      margin-bottom: 35px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 23px;
+      border-radius: 8px;
+      font-weight: 700;
+      transition: 0.3s;
+    }
+
+    .primary-btn {
+      background: #2d6cdf;
+      color: white;
+    }
+
+    .primary-btn:hover {
+      background: #1f57b9;
+      transform: translateY(-2px);
+    }
+
+    .secondary-btn {
+      border: 1px solid white;
+      color: white;
+    }
+
+    .secondary-btn:hover {
+      background: white;
+      color: #172033;
+    }
+
+
+    /* =========================
+       STATS
+    ========================= */
+
+    .stats {
+      background: white;
+      border-bottom: 1px solid #e8ebf0;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .stat {
+      text-align: center;
+      padding: 30px 15px;
+      border-right: 1px solid #e8ebf0;
+    }
+
+    .stat:last-child {
+      border-right: none;
+    }
+
+    .stat h2 {
+      color: #2d6cdf;
+      font-size: 30px;
+      margin-bottom: 4px;
+    }
+
+    .stat p {
+      color: #687386;
+      font-size: 14px;
+    }
+
+
+    /* =========================
+       SECTIONS
+    ========================= */
+
+    .section {
+      padding: 100px 0;
+    }
+
+    .section-heading {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 55px;
+    }
+
+    .section-heading h2 {
+      font-size: 42px;
+      line-height: 1.15;
+      margin-bottom: 15px;
+    }
+
+    .section-heading > p:last-child {
+      color: #697386;
+    }
+
+
+    /* =========================
+       PROPERTY CARDS
+    ========================= */
+
+    .property-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+    }
+
+    .property-card {
+      background: white;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid #e8ebf0;
+      box-shadow: 0 8px 30px rgba(20, 35, 60, 0.06);
+      transition: 0.3s;
+    }
+
+    .property-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 15px 40px rgba(20, 35, 60, 0.12);
+    }
+
+    .property-image {
+      height: 280px;
+      position: relative;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .image-one {
+      background-image:
+        url("https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=85");
+    }
+
+    .image-two {
+      background-image:
+        url("https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1000&q=85");
+    }
+
+    .image-three {
+      background-image:
+        url("https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1000&q=85");
+    }
+
+    .image-four {
+      background-image:
+        url("https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=1000&q=85");
+    }
+
+    .property-image span {
+      position: absolute;
+      top: 18px;
+      left: 18px;
+      background: #2d6cdf;
+      color: white;
+      padding: 7px 13px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .property-info {
+      padding: 25px;
+    }
+
+    .location {
+      color: #2d6cdf;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .property-info h3 {
+      font-size: 23px;
+      margin-bottom: 10px;
+    }
+
+    .property-description {
+      color: #6d7788;
+      font-size: 14px;
+      margin-bottom: 22px;
+    }
+
+    .property-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      border-top: 1px solid #edf0f4;
+      padding-top: 18px;
+    }
+
+    .property-bottom strong {
+      font-size: 17px;
+    }
+
+    .property-bottom a {
+      color: #2d6cdf;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+
+    /* =========================
+       SERVICES
+    ========================= */
+
+    .services-section {
+      background: white;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+    }
+
+    .service-card {
+      background: #f7f9fc;
+      padding: 32px 25px;
+      border-radius: 12px;
+      border: 1px solid #e9edf3;
+      transition: 0.3s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      border-color: #2d6cdf;
+    }
+
+    .service-icon {
+      width: 55px;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #e8f0ff;
+      border-radius: 10px;
+      font-size: 25px;
+      margin-bottom: 20px;
+    }
+
+    .service-card h3 {
+      margin-bottom: 10px;
+      font-size: 19px;
+    }
+
+    .service-card p {
+      color: #697386;
+      font-size: 14px;
+    }
+
+
+    /* =========================
+       ABOUT
+    ========================= */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .about-image {
+      min-height: 520px;
+      border-radius: 15px;
+
+      background:
+        url("https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=85");
+
+      background-size: cover;
+      background-position: center;
+    }
+
+    .about-content h2 {
+      font-size: 44px;
+      line-height: 1.15;
+      margin-bottom: 22px;
+    }
+
+    .about-content > p {
+      color: #697386;
+      margin-bottom: 18px;
+    }
+
+    .about-content .btn {
+      margin-top: 12px;
+    }
+
+
+    /* =========================
+       TESTIMONIALS
+    ========================= */
+
+    .testimonials {
+      background: white;
+    }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .testimonial-card {
+      background: #f7f9fc;
+      padding: 30px;
+      border-radius: 12px;
+      border: 1px solid #e8ecf2;
+    }
+
+    .testimonial-card p {
+      color: #586477;
+      font-size: 15px;
+      margin-bottom: 25px;
+    }
+
+    .testimonial-card h4 {
+      font-size: 16px;
+      margin-bottom: 3px;
+    }
+
+    .testimonial-card span {
+      color: #2d6cdf;
+      font-size: 13px;
+    }
+
+
+    /* =========================
+       CONTACT
+    ========================= */
+
+    .contact-section {
+      background: #172033;
+      color: white;
+      padding: 90px 0;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .contact-section .eyebrow {
+      color: #8db7ff;
+    }
+
+    .contact-section h2 {
+      font-size: 45px;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+
+    .contact-section > .container > div > p:not(.eyebrow) {
+      color: #c3ccda;
+      max-width: 600px;
+    }
+
+    .contact-details {
+      margin-top: 30px;
+    }
+
+    .contact-details p {
+      color: #e3e8f0;
+      margin-bottom: 10px;
+    }
+
+    .contact-box {
+      background: white;
+      color: #172033;
+      padding: 35px;
+      border-radius: 15px;
+    }
+
+    .contact-box h3 {
+      font-size: 25px;
+      margin-bottom: 12px;
+    }
+
+    .contact-box p {
+      color: #687386;
+      margin-bottom: 25px;
+    }
+
+    .whatsapp-btn {
+      display: block;
+      text-align: center;
+      background: #25d366;
+      color: white;
+      padding: 14px 20px;
+      border-radius: 8px;
+      font-weight: 800;
+      transition: 0.3s;
+    }
+
+    .whatsapp-btn:hover {
+      transform: translateY(-2px);
+    }
+
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      background: #101725;
+      color: #b9c1cf;
+      padding: 30px 0;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .footer-content h3 {
+      color: white;
+      font-size: 22px;
+      margin-bottom: 3px;
+    }
+
+    .footer-content p {
+      font-size: 13px;
+    }
+
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 900px) {
+
+      nav {
+        display: none;
+      }
+
+      .nav-btn {
+        display: none;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .stat:nth-child(2) {
+        border-right: none;
+      }
+
+      .property-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-image {
+        min-height: 400px;
+      }
+
+      .testimonial-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+
+    @media (max-width: 600px) {
+
+      .container {
+        width: 92%;
+      }
+
+      .hero {
+        min-height: 590px;
+      }
+
+      .hero h1 {
+        font-size: 43px;
+      }
+
+      .hero-text {
+        font-size: 16px;
+      }
+
+      .section {
+        padding: 70px 0;
+      }
+
+      .section-heading h2,
+      .about-content h2,
+      .contact-section h2 {
+        font-size: 34px;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .stat {
+        border-bottom: 1px solid #e8ebf0;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .property-image {
+        height: 230px;
+      }
+
+      .property-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .footer-content {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
 </head>
+
 
 <body>
 
-  <!-- Navigation -->
+  <!-- =========================
+       NAVIGATION
+  ========================== -->
+
   <header class="navbar">
+
     <div class="container nav-container">
-      <a href="#" class="logo">Prime<span>Estate</span></a>
+
+      <a href="#home" class="logo">
+        Prime<span>Estate</span>
+      </a>
 
       <nav>
         <a href="#home">Home</a>
@@ -24,35 +714,60 @@
         <a href="#contact">Contact</a>
       </nav>
 
-      <a href="#contact" class="nav-btn">Get In Touch</a>
+      <a href="#contact" class="nav-btn">
+        Get In Touch
+      </a>
+
     </div>
+
   </header>
 
 
-  <!-- Hero -->
+  <!-- =========================
+       HERO
+  ========================== -->
+
   <section class="hero" id="home">
-    <div class="hero-overlay"></div>
 
     <div class="container hero-content">
-      <p class="eyebrow">TRUSTED REAL ESTATE SERVICES</p>
 
-      <h1>Find a Place<br>You'll Love to Call Home.</h1>
+      <p class="eyebrow">
+        TRUSTED REAL ESTATE SERVICES
+      </p>
+
+      <h1>
+        Find a Place<br>
+        You'll Love to Call Home.
+      </h1>
 
       <p class="hero-text">
-        Discover quality properties in prime locations with professional
-        guidance from our experienced real estate team.
+        Discover quality properties in prime locations with
+        professional guidance from our experienced real estate team.
       </p>
 
       <div class="hero-buttons">
-        <a href="#properties" class="btn primary-btn">Explore Properties</a>
-        <a href="#contact" class="btn secondary-btn">Contact Us</a>
+
+        <a href="#properties" class="btn primary-btn">
+          Explore Properties
+        </a>
+
+        <a href="#contact" class="btn secondary-btn">
+          Contact Us
+        </a>
+
       </div>
+
     </div>
+
   </section>
 
 
-  <!-- Trust Stats -->
+  <!-- =========================
+       STATS
+  ========================== -->
+
   <section class="stats">
+
     <div class="container stats-grid">
 
       <div class="stat">
@@ -76,254 +791,504 @@
       </div>
 
     </div>
+
   </section>
 
 
-  <!-- Properties -->
+  <!-- =========================
+       PROPERTIES
+  ========================== -->
+
   <section class="section" id="properties">
+
     <div class="container">
 
       <div class="section-heading">
-        <p class="eyebrow">FEATURED PROPERTIES</p>
-        <h2>Explore Our Properties</h2>
+
+        <p class="eyebrow">
+          FEATURED PROPERTIES
+        </p>
+
+        <h2>
+          Explore Our Properties
+        </h2>
+
         <p>
           Find homes, apartments and commercial properties
           that match your needs.
         </p>
+
       </div>
+
 
       <div class="property-grid">
 
+
+        <!-- Property 1 -->
+
         <article class="property-card">
+
           <div class="property-image image-one">
-            <span>For Sale</span>
+
+            <span>
+              For Sale
+            </span>
+
           </div>
 
           <div class="property-info">
-            <p class="location">📍 DHA, Lahore</p>
-            <h3>Modern Family Home</h3>
+
+            <p class="location">
+              📍 DHA, Lahore
+            </p>
+
+            <h3>
+              Modern Family Home
+            </h3>
+
             <p class="property-description">
-              Spacious and modern home designed for comfortable family living.
+              Spacious and modern home designed for
+              comfortable family living.
             </p>
 
             <div class="property-bottom">
-              <strong>PKR 4.5 Crore</strong>
-              <a href="#contact">View Details →</a>
+
+              <strong>
+                PKR 4.5 Crore
+              </strong>
+
+              <a href="#contact">
+                View Details →
+              </a>
+
             </div>
+
           </div>
+
         </article>
 
 
+        <!-- Property 2 -->
+
         <article class="property-card">
+
           <div class="property-image image-two">
-            <span>For Sale</span>
+
+            <span>
+              For Sale
+            </span>
+
           </div>
 
           <div class="property-info">
-            <p class="location">📍 Bahria Town, Islamabad</p>
-            <h3>Elegant Family Residence</h3>
+
+            <p class="location">
+              📍 Bahria Town, Islamabad
+            </p>
+
+            <h3>
+              Elegant Family Residence
+            </h3>
+
             <p class="property-description">
-              Beautiful residence located in a peaceful and growing community.
+              Beautiful residence located in a peaceful
+              and growing community.
             </p>
 
             <div class="property-bottom">
-              <strong>PKR 3.8 Crore</strong>
-              <a href="#contact">View Details →</a>
+
+              <strong>
+                PKR 3.8 Crore
+              </strong>
+
+              <a href="#contact">
+                View Details →
+              </a>
+
             </div>
+
           </div>
+
         </article>
 
 
+        <!-- Property 3 -->
+
         <article class="property-card">
+
           <div class="property-image image-three">
-            <span>For Rent</span>
+
+            <span>
+              For Rent
+            </span>
+
           </div>
 
           <div class="property-info">
-            <p class="location">📍 Clifton, Karachi</p>
-            <h3>Modern City Apartment</h3>
+
+            <p class="location">
+              📍 Clifton, Karachi
+            </p>
+
+            <h3>
+              Modern City Apartment
+            </h3>
+
             <p class="property-description">
-              Stylish apartment with convenient access to major city areas.
+              Stylish apartment with convenient access
+              to major city areas.
             </p>
 
             <div class="property-bottom">
-              <strong>PKR 150K / Month</strong>
-              <a href="#contact">View Details →</a>
+
+              <strong>
+                PKR 150K / Month
+              </strong>
+
+              <a href="#contact">
+                View Details →
+              </a>
+
             </div>
+
           </div>
+
         </article>
 
 
+        <!-- Property 4 -->
+
         <article class="property-card">
+
           <div class="property-image image-four">
-            <span>For Sale</span>
+
+            <span>
+              For Sale
+            </span>
+
           </div>
 
           <div class="property-info">
-            <p class="location">📍 Gulberg, Lahore</p>
-            <h3>Commercial Property</h3>
+
+            <p class="location">
+              📍 Gulberg, Lahore
+            </p>
+
+            <h3>
+              Commercial Property
+            </h3>
+
             <p class="property-description">
-              Excellent commercial opportunity in a high-demand location.
+              Excellent commercial opportunity in
+              a high-demand location.
             </p>
 
             <div class="property-bottom">
-              <strong>PKR 7.2 Crore</strong>
-              <a href="#contact">View Details →</a>
+
+              <strong>
+                PKR 7.2 Crore
+              </strong>
+
+              <a href="#contact">
+                View Details →
+              </a>
+
             </div>
+
           </div>
+
         </article>
 
       </div>
+
     </div>
+
   </section>
 
 
-  <!-- Services -->
+  <!-- =========================
+       SERVICES
+  ========================== -->
+
   <section class="section services-section" id="services">
+
     <div class="container">
 
       <div class="section-heading">
-        <p class="eyebrow">WHAT WE DO</p>
-        <h2>Our Real Estate Services</h2>
+
+        <p class="eyebrow">
+          WHAT WE DO
+        </p>
+
+        <h2>
+          Our Real Estate Services
+        </h2>
+
       </div>
+
 
       <div class="services-grid">
 
-        <div class="service-card">
-          <div class="service-icon">🏠</div>
-          <h3>Property Buying</h3>
-          <p>
-            Find the right property based on your budget,
-            location and requirements.
-          </p>
-        </div>
 
         <div class="service-card">
-          <div class="service-icon">🔑</div>
-          <h3>Property Selling</h3>
+
+          <div class="service-icon">
+            🏠
+          </div>
+
+          <h3>
+            Property Buying
+          </h3>
+
           <p>
-            Get professional support to market and sell
-            your property effectively.
+            Find the right property based on your
+            budget, location and requirements.
           </p>
+
         </div>
 
+
         <div class="service-card">
-          <div class="service-icon">🏢</div>
-          <h3>Commercial Property</h3>
+
+          <div class="service-icon">
+            🔑
+          </div>
+
+          <h3>
+            Property Selling
+          </h3>
+
+          <p>
+            Get professional support to market and
+            sell your property effectively.
+          </p>
+
+        </div>
+
+
+        <div class="service-card">
+
+          <div class="service-icon">
+            🏢
+          </div>
+
+          <h3>
+            Commercial Property
+          </h3>
+
           <p>
             Explore commercial spaces suitable for
             business and investment purposes.
           </p>
+
         </div>
 
+
         <div class="service-card">
-          <div class="service-icon">📋</div>
-          <h3>Property Consultation</h3>
+
+          <div class="service-icon">
+            📋
+          </div>
+
+          <h3>
+            Property Consultation
+          </h3>
+
           <p>
             Get guidance about property options,
             locations and investment opportunities.
           </p>
+
         </div>
 
+
       </div>
+
     </div>
+
   </section>
 
 
-  <!-- About -->
-  <section class="section about-section" id="about">
+  <!-- =========================
+       ABOUT
+  ========================== -->
+
+  <section class="section" id="about">
+
     <div class="container about-grid">
+
 
       <div class="about-image"></div>
 
+
       <div class="about-content">
-        <p class="eyebrow">ABOUT PRIME ESTATE</p>
 
-        <h2>Helping You Make Confident Property Decisions.</h2>
+        <p class="eyebrow">
+          ABOUT PRIME ESTATE
+        </p>
+
+        <h2>
+          Helping You Make Confident Property Decisions.
+        </h2>
 
         <p>
-          Prime Estate is a professional real estate company focused
-          on helping clients find suitable residential and commercial
-          properties.
+          Prime Estate is a professional real estate company
+          focused on helping clients find suitable residential
+          and commercial properties.
         </p>
 
         <p>
-          Our goal is to make the property buying, selling and renting
-          process simple, transparent and convenient.
+          Our goal is to make the property buying, selling
+          and renting process simple, transparent and convenient.
         </p>
 
-        <a href="#contact" class="btn primary-btn">Talk To Us</a>
+        <a href="#contact" class="btn primary-btn">
+          Talk To Us
+        </a>
+
       </div>
 
+
     </div>
+
   </section>
 
 
-  <!-- Testimonials -->
+  <!-- =========================
+       TESTIMONIALS
+  ========================== -->
+
   <section class="section testimonials">
+
     <div class="container">
 
       <div class="section-heading">
-        <p class="eyebrow">CLIENT REVIEWS</p>
-        <h2>What Our Clients Say</h2>
+
+        <p class="eyebrow">
+          CLIENT REVIEWS
+        </p>
+
+        <h2>
+          What Our Clients Say
+        </h2>
+
       </div>
+
 
       <div class="testimonial-grid">
 
-        <div class="testimonial-card">
-          <p>
-            “The team helped us find a beautiful home that matched
-            our requirements. The whole process was smooth.”
-          </p>
-          <h4>Ahmed R.</h4>
-          <span>Home Buyer</span>
-        </div>
 
         <div class="testimonial-card">
+
           <p>
-            “Very professional service and helpful guidance throughout
-            the property buying process.”
+            “The team helped us find a beautiful home
+            that matched our requirements. The whole
+            process was smooth.”
           </p>
-          <h4>Usman K.</h4>
-          <span>Property Client</span>
+
+          <h4>
+            Ahmed R.
+          </h4>
+
+          <span>
+            Home Buyer
+          </span>
+
         </div>
 
+
         <div class="testimonial-card">
+
           <p>
-            “They understood what we needed and helped us find
-            the right commercial property.”
+            “Very professional service and helpful
+            guidance throughout the property buying process.”
           </p>
-          <h4>Bilal M.</h4>
-          <span>Business Owner</span>
+
+          <h4>
+            Usman K.
+          </h4>
+
+          <span>
+            Property Client
+          </span>
+
         </div>
+
+
+        <div class="testimonial-card">
+
+          <p>
+            “They understood what we needed and helped
+            us find the right commercial property.”
+          </p>
+
+          <h4>
+            Bilal M.
+          </h4>
+
+          <span>
+            Business Owner
+          </span>
+
+        </div>
+
 
       </div>
+
     </div>
+
   </section>
 
 
-  <!-- Contact -->
+  <!-- =========================
+       CONTACT
+  ========================== -->
+
   <section class="contact-section" id="contact">
+
     <div class="container contact-grid">
 
-      <div>
-        <p class="eyebrow">GET IN TOUCH</p>
-        <h2>Let's Find Your Next Property.</h2>
 
-        <p>
-          Have a property requirement? Contact our team
-          and let's discuss your needs.
+      <div>
+
+        <p class="eyebrow">
+          GET IN TOUCH
         </p>
 
+        <h2>
+          Let's Find Your Next Property.
+        </h2>
+
+        <p>
+          Have a property requirement?
+          Contact our team and let's discuss your needs.
+        </p>
+
+
         <div class="contact-details">
-          <p>📞 +92 300 1234567</p>
-          <p>✉️ info@example.com</p>
-          <p>📍 Lahore, Pakistan</p>
+
+          <p>
+            📞 +92 300 1234567
+          </p>
+
+          <p>
+            ✉️ info@example.com
+          </p>
+
+          <p>
+            📍 Lahore, Pakistan
+          </p>
+
         </div>
+
       </div>
 
+
       <div class="contact-box">
-        <h3>Ready to Talk?</h3>
+
+        <h3>
+          Ready to Talk?
+        </h3>
 
         <p>
           Contact us directly on WhatsApp for property
@@ -334,28 +1299,92 @@
           href="https://wa.me/923001234567"
           target="_blank"
           class="whatsapp-btn">
+
           💬 Chat on WhatsApp
+
         </a>
+
       </div>
 
+
     </div>
+
   </section>
 
 
-  <!-- Footer -->
+  <!-- =========================
+       FOOTER
+  ========================== -->
+
   <footer>
+
     <div class="container footer-content">
+
       <div>
-        <h3>Prime<span>Estate</span></h3>
-        <p>Professional real estate services.</p>
+
+        <h3>
+          Prime<span>Estate</span>
+        </h3>
+
+        <p>
+          Professional real estate services.
+        </p>
+
       </div>
 
-      <p>© 2026 Prime Estate. All Rights Reserved.</p>
+      <p>
+        © 2026 Prime Estate. All Rights Reserved.
+      </p>
+
     </div>
+
   </footer>
 
 
-  <script src="script.js"></script>
+  <!-- =========================
+       JAVASCRIPT
+  ========================== -->
+
+  <script>
+
+    // Smooth scrolling for navigation links
+
+    document.querySelectorAll('a[href^="#"]').forEach(function(link) {
+
+      link.addEventListener("click", function(event) {
+
+        const target = document.querySelector(
+          this.getAttribute("href")
+        );
+
+        if (target) {
+
+          event.preventDefault();
+
+          target.scrollIntoView({
+            behavior: "smooth"
+          });
+
+        }
+
+      });
+
+    });
+
+
+    // Simple button feedback
+
+    document.querySelectorAll(".property-bottom a").forEach(function(button) {
+
+      button.addEventListener("click", function() {
+
+        console.log("Property details requested.");
+
+      });
+
+    });
+
+  </script>
 
 </body>
 </html>
