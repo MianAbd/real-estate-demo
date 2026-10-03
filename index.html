@@ -5,8 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Prime Estate | Premium Real Estate</title>
-
-<meta name="description" content="Prime Estate — Discover premium properties and find your perfect home.">
+<meta name="description" content="Prime Estate — Premium properties across Pakistan.">
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23090909'/%3E%3Cpath d='M22 48 50 24l28 24v30H61V59H39v19H22Z' fill='%23d4af37'/%3E%3C/svg%3E">
 
@@ -36,7 +35,7 @@
 body{
   font-family:"DM Sans",sans-serif;
   background:var(--black);
-  color:var(--white);
+  color:#fff;
   line-height:1.6;
 }
 
@@ -55,16 +54,14 @@ a{
   margin:auto;
 }
 
-.gold{
-  color:var(--gold);
-}
+.gold{color:var(--gold);}
 
 .btn{
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  gap:9px;
-  padding:13px 21px;
+  gap:8px;
+  padding:12px 20px;
   border-radius:7px;
   border:1px solid var(--gold);
   background:var(--gold);
@@ -85,23 +82,18 @@ a{
   color:var(--gold);
 }
 
-.btn-outline:hover{
-  background:var(--gold);
-  color:#000;
-}
-
-/* NAVBAR */
+/* NAV */
 header{
   position:sticky;
   top:0;
   z-index:1000;
-  background:rgba(8,8,8,.94);
+  background:rgba(8,8,8,.95);
   backdrop-filter:blur(15px);
   border-bottom:1px solid var(--border);
 }
 
 .nav{
-  min-height:72px;
+  min-height:68px;
   display:flex;
   align-items:center;
   justify-content:space-between;
@@ -110,27 +102,26 @@ header{
 .logo{
   display:flex;
   align-items:center;
-  gap:11px;
+  gap:10px;
   font-family:"Playfair Display",serif;
-  font-size:25px;
+  font-size:24px;
   font-weight:700;
 }
 
 .logo-mark{
-  width:36px;
-  height:36px;
+  width:35px;
+  height:35px;
   border:1px solid var(--gold);
   border-radius:8px;
   display:grid;
   place-items:center;
   color:var(--gold);
-  font-size:19px;
 }
 
 .nav-links{
   display:flex;
   align-items:center;
-  gap:27px;
+  gap:26px;
   list-style:none;
 }
 
@@ -148,60 +139,59 @@ header{
   display:none;
   background:none;
   border:0;
-  color:white;
+  color:#fff;
   font-size:28px;
   cursor:pointer;
 }
 
 /* HERO */
 .hero{
-  min-height:680px;
+  min-height:610px;
   display:flex;
   align-items:center;
   position:relative;
-  overflow:hidden;
   background:
-    linear-gradient(90deg,rgba(0,0,0,.88) 0%,rgba(0,0,0,.68) 48%,rgba(0,0,0,.3)),
+    linear-gradient(90deg,rgba(0,0,0,.88),rgba(0,0,0,.45)),
     url("https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=2000&q=85") center/cover;
 }
 
 .hero-content{
-  max-width:730px;
-  padding:100px 0;
+  max-width:700px;
+  padding:75px 0;
 }
 
 .eyebrow{
   color:var(--gold);
   text-transform:uppercase;
   letter-spacing:3px;
-  font-size:13px;
+  font-size:12px;
   font-weight:700;
-  margin-bottom:18px;
+  margin-bottom:14px;
 }
 
 .hero h1{
   font-family:"Playfair Display",serif;
-  font-size:clamp(46px,7vw,78px);
-  line-height:1.02;
-  margin-bottom:23px;
+  font-size:clamp(44px,7vw,72px);
+  line-height:1.03;
+  margin-bottom:20px;
 }
 
 .hero p{
-  max-width:590px;
+  max-width:570px;
   color:#ddd;
-  font-size:17px;
-  margin-bottom:32px;
+  font-size:16px;
+  margin-bottom:28px;
 }
 
 .hero-actions{
   display:flex;
   flex-wrap:wrap;
-  gap:12px;
+  gap:10px;
 }
 
 /* SEARCH */
 .search-wrap{
-  margin-top:-65px;
+  margin-top:-52px;
   position:relative;
   z-index:5;
 }
@@ -209,26 +199,26 @@ header{
 .search-box{
   background:#111;
   border:1px solid var(--border);
-  border-radius:14px;
-  padding:23px;
-  box-shadow:0 20px 60px rgba(0,0,0,.5);
+  border-radius:13px;
+  padding:20px;
+  box-shadow:0 18px 50px rgba(0,0,0,.5);
 }
 
 .search-title{
   font-family:"Playfair Display",serif;
-  font-size:22px;
-  margin-bottom:17px;
+  font-size:21px;
+  margin-bottom:14px;
 }
 
 .search-grid{
   display:grid;
-  grid-template-columns:1.3fr 1fr 1fr auto;
-  gap:11px;
+  grid-template-columns:1.4fr 1fr 1fr 1fr auto;
+  gap:9px;
 }
 
 .input{
   width:100%;
-  padding:14px 15px;
+  padding:13px;
   background:#090909;
   border:1px solid #292929;
   color:white;
@@ -242,23 +232,19 @@ header{
 
 /* SECTIONS */
 section{
-  padding:95px 0;
+  padding:72px 0;
 }
 
 .section-head{
   text-align:center;
-  max-width:700px;
-  margin:0 auto 48px;
-}
-
-.section-head .eyebrow{
-  margin-bottom:10px;
+  max-width:680px;
+  margin:0 auto 38px;
 }
 
 .section-head h2{
   font-family:"Playfair Display",serif;
-  font-size:clamp(32px,5vw,48px);
-  margin-bottom:13px;
+  font-size:clamp(30px,5vw,45px);
+  margin-bottom:10px;
 }
 
 .section-head p{
@@ -270,32 +256,29 @@ section{
   display:grid;
   grid-template-columns:repeat(4,1fr);
   border:1px solid var(--border);
-  border-radius:13px;
+  border-radius:12px;
   overflow:hidden;
-  margin-top:65px;
+  margin-top:55px;
 }
 
 .stat{
   text-align:center;
-  padding:27px 15px;
+  padding:23px 12px;
   background:#0d0d0d;
   border-right:1px solid var(--border);
 }
 
-.stat:last-child{
-  border-right:0;
-}
+.stat:last-child{border-right:0;}
 
 .stat strong{
   display:block;
   color:var(--gold);
-  font-size:29px;
-  margin-bottom:4px;
+  font-size:27px;
 }
 
 .stat span{
   color:#999;
-  font-size:13px;
+  font-size:12px;
 }
 
 /* PROPERTIES */
@@ -306,25 +289,26 @@ section{
 .property-grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:22px;
+  gap:20px;
 }
 
 .property{
   background:var(--card);
   border:1px solid #242424;
-  border-radius:13px;
+  border-radius:12px;
   overflow:hidden;
-  transition:.35s;
+  transition:.3s;
+  cursor:pointer;
 }
 
 .property:hover{
-  transform:translateY(-7px);
+  transform:translateY(-6px);
   border-color:var(--gold);
-  box-shadow:0 20px 45px rgba(0,0,0,.35);
+  box-shadow:0 18px 40px rgba(0,0,0,.4);
 }
 
 .property-img{
-  height:250px;
+  height:235px;
   position:relative;
   overflow:hidden;
 }
@@ -341,23 +325,23 @@ section{
 
 .tag{
   position:absolute;
-  top:14px;
-  left:14px;
+  top:13px;
+  left:13px;
   background:var(--gold);
   color:#000;
-  padding:6px 11px;
+  padding:5px 10px;
   border-radius:5px;
-  font-size:11px;
+  font-size:10px;
   font-weight:800;
   text-transform:uppercase;
 }
 
 .heart{
   position:absolute;
-  top:13px;
-  right:13px;
-  width:38px;
-  height:38px;
+  top:12px;
+  right:12px;
+  width:37px;
+  height:37px;
   border-radius:50%;
   border:1px solid rgba(255,255,255,.3);
   background:rgba(0,0,0,.55);
@@ -367,70 +351,65 @@ section{
 }
 
 .property-info{
-  padding:21px;
+  padding:19px;
 }
 
 .property-info h3{
   font-family:"Playfair Display",serif;
-  font-size:23px;
-  margin-bottom:5px;
+  font-size:22px;
+  margin-bottom:4px;
 }
 
 .location{
   color:#999;
   font-size:13px;
-  margin-bottom:16px;
+  margin-bottom:13px;
 }
 
 .price{
   color:var(--gold);
-  font-size:22px;
+  font-size:21px;
   font-weight:700;
-  margin-bottom:15px;
+  margin-bottom:13px;
 }
 
 .features{
   display:flex;
-  gap:15px;
+  gap:13px;
   border-top:1px solid #282828;
-  padding-top:15px;
+  padding-top:13px;
   color:#aaa;
-  font-size:12px;
+  font-size:11px;
 }
 
 /* SERVICES */
 .services-grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:20px;
+  gap:18px;
 }
 
 .service{
-  padding:31px;
+  padding:27px;
   background:#111;
   border:1px solid #222;
-  border-radius:12px;
-  transition:.3s;
-}
-
-.service:hover{
-  border-color:var(--gold);
+  border-radius:11px;
 }
 
 .service-icon{
-  font-size:30px;
-  margin-bottom:16px;
+  font-size:28px;
+  margin-bottom:13px;
 }
 
 .service h3{
   font-family:"Playfair Display",serif;
-  font-size:23px;
-  margin-bottom:8px;
+  font-size:22px;
+  margin-bottom:7px;
 }
 
 .service p{
   color:#999;
-  font-size:14px;
+  font-size:13px;
 }
 
 /* ABOUT */
@@ -441,13 +420,13 @@ section{
 .about-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:70px;
+  gap:55px;
   align-items:center;
 }
 
 .about-img{
-  height:500px;
-  border-radius:13px;
+  height:440px;
+  border-radius:12px;
   overflow:hidden;
   border:1px solid var(--border);
 }
@@ -459,23 +438,23 @@ section{
 
 .about h2{
   font-family:"Playfair Display",serif;
-  font-size:clamp(34px,5vw,51px);
+  font-size:clamp(32px,5vw,48px);
   line-height:1.1;
-  margin-bottom:20px;
+  margin-bottom:17px;
 }
 
 .about p{
   color:#aaa;
-  margin-bottom:19px;
+  margin-bottom:16px;
 }
 
 .checks{
   list-style:none;
-  margin:25px 0;
+  margin:20px 0;
 }
 
 .checks li{
-  margin:11px 0;
+  margin:9px 0;
   color:#ddd;
 }
 
@@ -483,44 +462,70 @@ section{
   content:"✓";
   color:var(--gold);
   font-weight:bold;
-  margin-right:10px;
+  margin-right:9px;
+}
+
+/* CONSULTATION */
+.consultation{
+  text-align:center;
+  padding:58px 0;
+}
+
+.consultation-box{
+  border:1px solid var(--gold);
+  border-radius:14px;
+  padding:48px 25px;
+  background:
+    linear-gradient(rgba(0,0,0,.78),rgba(0,0,0,.78)),
+    url("https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1800&q=85") center/cover;
+}
+
+.consultation-box h2{
+  font-family:"Playfair Display",serif;
+  font-size:clamp(31px,5vw,47px);
+  margin-bottom:10px;
+}
+
+.consultation-box p{
+  color:#ddd;
+  margin-bottom:22px;
 }
 
 /* REVIEWS */
 .review-grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:20px;
+  gap:18px;
 }
 
 .review{
   background:#111;
   border:1px solid #242424;
-  border-radius:12px;
-  padding:26px;
+  border-radius:11px;
+  padding:24px;
 }
 
 .stars{
   color:var(--gold);
   letter-spacing:3px;
-  margin-bottom:17px;
+  margin-bottom:14px;
 }
 
 .review p{
   color:#bbb;
-  font-size:14px;
-  margin-bottom:21px;
+  font-size:13px;
+  margin-bottom:19px;
 }
 
 .reviewer{
   display:flex;
   align-items:center;
-  gap:12px;
+  gap:11px;
 }
 
 .reviewer img{
-  width:48px;
-  height:48px;
+  width:46px;
+  height:46px;
   object-fit:cover;
   border-radius:50%;
   border:2px solid var(--gold);
@@ -528,179 +533,83 @@ section{
 
 .reviewer strong{
   display:block;
+  font-size:14px;
 }
 
 .reviewer span{
   color:#777;
-  font-size:12px;
+  font-size:11px;
 }
 
-/* MAP + CONTACT */
-.contact{
+/* MAP */
+.map-section{
   background:#0d0d0d;
 }
 
-.contact-grid{
-  display:grid;
-  grid-template-columns:1fr 1.2fr;
-  gap:24px;
-}
-
-.contact-card{
-  background:#111;
-  border:1px solid var(--border);
-  border-radius:13px;
-  padding:35px;
-}
-
-.contact-card h2{
-  font-family:"Playfair Display",serif;
-  font-size:39px;
-  margin-bottom:13px;
-}
-
-.contact-card p{
-  color:#999;
-  margin-bottom:25px;
-}
-
-.contact-item{
-  display:flex;
-  gap:13px;
-  padding:15px 0;
-  border-bottom:1px solid #242424;
-}
-
-.contact-item:last-child{
-  border-bottom:0;
-}
-
-.contact-icon{
-  color:var(--gold);
-  font-size:20px;
-}
-
-.contact-item small{
-  display:block;
-  color:#777;
-  margin-bottom:2px;
-}
-
-.contact-item strong{
-  font-size:14px;
-}
-
 .map{
-  min-height:420px;
-  border-radius:13px;
+  min-height:390px;
+  border-radius:12px;
   overflow:hidden;
   border:1px solid var(--border);
-  background:#111;
 }
 
 .map iframe{
   width:100%;
-  height:100%;
-  min-height:420px;
+  height:390px;
   border:0;
   filter:grayscale(100%) contrast(1.15);
-}
-
-/* CTA */
-.cta{
-  padding:80px 0;
-}
-
-.cta-box{
-  position:relative;
-  overflow:hidden;
-  border:1px solid var(--gold);
-  border-radius:16px;
-  padding:65px 40px;
-  text-align:center;
-  background:
-    linear-gradient(rgba(0,0,0,.76),rgba(0,0,0,.76)),
-    url("https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1800&q=85") center/cover;
-}
-
-.cta-box h2{
-  font-family:"Playfair Display",serif;
-  font-size:clamp(33px,5vw,50px);
-  margin-bottom:12px;
-}
-
-.cta-box p{
-  color:#ddd;
-  margin-bottom:25px;
 }
 
 /* FOOTER */
 footer{
   border-top:1px solid #222;
-  padding:55px 0 25px;
+  padding:42px 0 20px;
 }
 
-.footer-grid{
-  display:grid;
-  grid-template-columns:1.5fr 1fr 1fr;
-  gap:50px;
-  padding-bottom:40px;
+.footer-content{
+  display:flex;
+  justify-content:space-between;
+  gap:30px;
+  align-items:flex-start;
 }
 
 footer h3{
   font-family:"Playfair Display",serif;
-  font-size:23px;
-  margin-bottom:14px;
+  font-size:22px;
+  margin-bottom:10px;
 }
 
-footer p, footer a{
+footer p{
   color:#888;
-  font-size:14px;
+  font-size:13px;
 }
 
-footer a{
+.footer-contact{
+  text-align:right;
+}
+
+.footer-contact a{
   display:block;
-  margin:8px 0;
+  color:#aaa;
+  font-size:13px;
+  margin:5px 0;
 }
 
-footer a:hover{
+.footer-contact a:hover{
   color:var(--gold);
 }
 
 .copyright{
   border-top:1px solid #222;
-  padding-top:22px;
+  margin-top:28px;
+  padding-top:18px;
   text-align:center;
   color:#666;
-  font-size:12px;
+  font-size:11px;
 }
 
-/* MOBILE */
-@media(max-width:900px){
-  .nav-links{
-    position:absolute;
-    top:72px;
-    left:0;
-    width:100%;
-    background:#090909;
-    border-bottom:1px solid var(--border);
-    display:none;
-    flex-direction:column;
-    padding:25px;
-  }
-
-  .nav-links.active{
-    display:flex;
-  }
-
-  .menu-btn{
-    display:block;
-  }
-
-  .nav .btn{
-    display:none;
-  }
-
+/* TABLET */
+@media(max-width:1000px){
   .search-grid{
     grid-template-columns:1fr 1fr;
   }
@@ -710,40 +619,83 @@ footer a:hover{
   .services-grid{
     grid-template-columns:1fr 1fr;
   }
-
-  .about-grid,
-  .contact-grid{
-    grid-template-columns:1fr;
-  }
-
-  .about-img{
-    height:390px;
-  }
 }
 
-@media(max-width:600px){
+/* MOBILE */
+@media(max-width:650px){
+
+  .nav{
+    min-height:64px;
+  }
+
+  .logo{
+    font-size:21px;
+  }
+
+  .logo-mark{
+    width:32px;
+    height:32px;
+  }
+
+  .menu-btn{
+    display:block;
+  }
+
+  .nav > .btn{
+    display:none;
+  }
+
+  .nav-links{
+    position:absolute;
+    top:64px;
+    left:0;
+    width:100%;
+    background:#090909;
+    border-bottom:1px solid var(--border);
+    display:none;
+    flex-direction:column;
+    align-items:stretch;
+    gap:0;
+    padding:8px 20px 15px;
+  }
+
+  .nav-links.active{
+    display:flex;
+  }
+
+  .nav-links li{
+    border-bottom:1px solid #222;
+  }
+
+  .nav-links a{
+    display:block;
+    padding:13px 4px;
+    font-size:17px;
+    font-weight:600;
+  }
+
   .hero{
-    min-height:620px;
+    min-height:560px;
   }
 
   .hero-content{
-    padding:80px 0;
+    padding:65px 0;
   }
 
   .hero h1{
-    font-size:45px;
+    font-size:43px;
   }
 
   .hero p{
-    font-size:15px;
+    font-size:14px;
   }
 
   section{
-    padding:70px 0;
+    padding:58px 0;
   }
 
   .search-wrap{
-    margin-top:-40px;
+    margin-top:-35px;
   }
 
   .search-grid{
@@ -752,10 +704,10 @@ footer a:hover{
 
   .stats{
     grid-template-columns:1fr 1fr;
+    margin-top:42px;
   }
 
   .stat{
-    border-right:1px solid var(--border);
     border-bottom:1px solid var(--border);
   }
 
@@ -765,26 +717,39 @@ footer a:hover{
     grid-template-columns:1fr;
   }
 
-  .about-img{
-    height:300px;
+  .property-img{
+    height:220px;
   }
 
-  .contact-card{
-    padding:25px;
+  .about-grid{
+    grid-template-columns:1fr;
+    gap:32px;
+  }
+
+  .about-img{
+    height:280px;
+  }
+
+  .consultation{
+    padding:48px 0;
+  }
+
+  .consultation-box{
+    padding:40px 18px;
   }
 
   .map,
   .map iframe{
-    min-height:330px;
+    min-height:300px;
+    height:300px;
   }
 
-  .cta-box{
-    padding:50px 22px;
+  .footer-content{
+    flex-direction:column;
   }
 
-  .footer-grid{
-    grid-template-columns:1fr;
-    gap:28px;
+  .footer-contact{
+    text-align:left;
   }
 }
 </style>
@@ -853,20 +818,32 @@ footer a:hover{
 
       <div class="search-grid">
 
-        <input id="searchInput" class="input" type="text" placeholder="Search location or property">
+        <input id="searchInput" class="input"
+               type="text"
+               placeholder="Search location or property">
 
-        <select class="input" id="typeSelect">
-          <option value="">Property Type</option>
+        <select class="input" id="citySelect">
+          <option value="">Select City</option>
+          <option>Karachi</option>
+          <option>Lahore</option>
+          <option>Islamabad</option>
+          <option>Rawalpindi</option>
+          <option>Faisalabad</option>
+          <option>Multan</option>
+        </select>
+
+        <select class="input">
+          <option>Property Type</option>
           <option>Villa</option>
           <option>Apartment</option>
           <option>House</option>
         </select>
 
-        <select class="input" id="priceSelect">
-          <option value="">Price Range</option>
-          <option>Under $500K</option>
-          <option>$500K - $1M</option>
-          <option>$1M+</option>
+        <select class="input">
+          <option>Price Range</option>
+          <option>Under PKR 5 Crore</option>
+          <option>PKR 5–10 Crore</option>
+          <option>PKR 10 Crore+</option>
         </select>
 
         <button class="btn" onclick="searchProperties()">Search</button>
@@ -918,67 +895,128 @@ footer a:hover{
       <p>Handpicked properties designed around comfort, lifestyle and value.</p>
     </div>
 
-    <div class="property-grid" id="propertyGrid">
+    <div class="property-grid">
 
-      <article class="property">
+      <!-- KARACHI -->
+      <article class="property" onclick="goToBooking()">
+
         <div class="property-img">
-          <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=85" alt="Luxury villa">
+          <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=85"
+               alt="Luxury property in Clifton Karachi">
+
           <span class="tag">For Sale</span>
-          <button class="heart" onclick="favorite(this)">♡</button>
+
+          <button class="heart"
+                  onclick="favorite(event,this)">♡</button>
         </div>
 
         <div class="property-info">
+
           <h3>The Grand Villa</h3>
-          <div class="location">📍 Beverly Hills, California</div>
-          <div class="price">$1,250,000</div>
+
+          <div class="location">📍 Clifton, Karachi</div>
+
+          <div class="price">PKR 12.5 Crore</div>
 
           <div class="features">
             <span>🛏 4 Beds</span>
             <span>🛁 3 Baths</span>
             <span>📐 3,200 sqft</span>
           </div>
+
         </div>
       </article>
 
 
-      <article class="property">
+      <!-- LAHORE DHA -->
+      <article class="property" onclick="goToBooking()">
+
         <div class="property-img">
-          <img src="https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=1200&q=85" alt="Modern home">
+          <img src="https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=1200&q=85"
+               alt="Modern property in DHA Lahore">
+
           <span class="tag">Featured</span>
-          <button class="heart" onclick="favorite(this)">♡</button>
+
+          <button class="heart"
+                  onclick="favorite(event,this)">♡</button>
         </div>
 
         <div class="property-info">
-          <h3>Ocean View Residence</h3>
-          <div class="location">📍 Miami, Florida</div>
-          <div class="price">$685,000</div>
+
+          <h3>Modern Family Home</h3>
+
+          <div class="location">📍 DHA, Lahore</div>
+
+          <div class="price">PKR 6.85 Crore</div>
 
           <div class="features">
             <span>🛏 3 Beds</span>
             <span>🛁 2 Baths</span>
             <span>📐 2,100 sqft</span>
           </div>
+
         </div>
       </article>
 
 
-      <article class="property">
+      <!-- MULTAN -->
+      <article class="property" onclick="goToBooking()">
+
         <div class="property-img">
-          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=85" alt="Family home">
-          <span class="tag">For Rent</span>
-          <button class="heart" onclick="favorite(this)">♡</button>
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=85"
+               alt="Modern house in Multan">
+
+          <span class="tag">For Sale</span>
+
+          <button class="heart"
+                  onclick="favorite(event,this)">♡</button>
         </div>
 
         <div class="property-info">
-          <h3>Modern Family Home</h3>
-          <div class="location">📍 Austin, Texas</div>
-          <div class="price">$3,400 / month</div>
+
+          <h3>Premium Residence</h3>
+
+          <div class="location">📍 Gulgasht, Multan</div>
+
+          <div class="price">PKR 4.95 Crore</div>
 
           <div class="features">
             <span>🛏 4 Beds</span>
             <span>🛁 3 Baths</span>
             <span>📐 2,750 sqft</span>
           </div>
+
+        </div>
+      </article>
+
+
+      <!-- LAHORE BAHRIA -->
+      <article class="property" onclick="goToBooking()">
+
+        <div class="property-img">
+          <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=85"
+               alt="Luxury home in Bahria Town Lahore">
+
+          <span class="tag">Premium</span>
+
+          <button class="heart"
+                  onclick="favorite(event,this)">♡</button>
+        </div>
+
+        <div class="property-info">
+
+          <h3>Luxury Family Villa</h3>
+
+          <div class="location">📍 Bahria Town, Lahore</div>
+
+          <div class="price">PKR 8.75 Crore</div>
+
+          <div class="features">
+            <span>🛏 5 Beds</span>
+            <span>🛁 4 Baths</span>
+            <span>📐 3,600 sqft</span>
+          </div>
+
         </div>
       </article>
 
@@ -1030,14 +1068,18 @@ footer a:hover{
   <div class="container about-grid">
 
     <div class="about-img">
-      <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1400&q=85" alt="Luxury interior">
+      <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1400&q=85"
+           alt="Luxury interior">
     </div>
 
     <div>
 
       <div class="eyebrow">Why Prime Estate</div>
 
-      <h2>Property decisions deserve a <span class="gold">premium experience.</span></h2>
+      <h2>
+        Property decisions deserve a
+        <span class="gold">premium experience.</span>
+      </h2>
 
       <p>
         Prime Estate connects people with exceptional properties through
@@ -1052,7 +1094,35 @@ footer a:hover{
         <li>Dedicated client support</li>
       </ul>
 
-      <a href="#contact" class="btn">Talk to an Agent →</a>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- BOOK CONSULTATION -->
+<section class="consultation" id="contact">
+
+  <div class="container">
+
+    <div class="consultation-box">
+
+      <div class="eyebrow">Your Next Move Starts Here</div>
+
+      <h2>
+        Book a <span class="gold">Consultation</span>
+      </h2>
+
+      <p>
+        Tell us what you're looking for and our property specialists
+        will help you find the right property.
+      </p>
+
+      <a class="btn"
+         href="https://wa.me/923001234567?text=Hello%20Prime%20Estate%2C%20I%20would%20like%20to%20book%20a%20property%20consultation."
+         target="_blank">
+        WhatsApp an Agent →
+      </a>
 
     </div>
 
@@ -1066,14 +1136,21 @@ footer a:hover{
   <div class="container">
 
     <div class="section-head">
+
       <div class="eyebrow">Client Stories</div>
+
       <h2>What Our Clients Say</h2>
-      <p>Real experiences from people who found their next place with us.</p>
+
+      <p>
+        Experiences from people who found their next property with us.
+      </p>
+
     </div>
 
     <div class="review-grid">
 
       <div class="review">
+
         <div class="stars">★★★★★</div>
 
         <p>
@@ -1082,16 +1159,22 @@ footer a:hover{
         </p>
 
         <div class="reviewer">
-          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80" alt="Sarah">
+
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80"
+               alt="Sarah">
+
           <div>
             <strong>Sarah & James</strong>
             <span>Home Buyers</span>
           </div>
+
         </div>
+
       </div>
 
 
       <div class="review">
+
         <div class="stars">★★★★★</div>
 
         <p>
@@ -1100,16 +1183,22 @@ footer a:hover{
         </p>
 
         <div class="reviewer">
-          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80" alt="Daniel">
+
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80"
+               alt="Daniel">
+
           <div>
             <strong>Daniel Morgan</strong>
             <span>Property Investor</span>
           </div>
+
         </div>
+
       </div>
 
 
       <div class="review">
+
         <div class="stars">★★★★★</div>
 
         <p>
@@ -1118,12 +1207,17 @@ footer a:hover{
         </p>
 
         <div class="reviewer">
-          <img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=200&q=80" alt="Emily">
+
+          <img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=200&q=80"
+               alt="Emily">
+
           <div>
             <strong>Emily Carter</strong>
             <span>Home Buyer</span>
           </div>
+
         </div>
+
       </div>
 
     </div>
@@ -1132,91 +1226,28 @@ footer a:hover{
 
 </section>
 
-<!-- CONTACT + MAP -->
-<section class="contact" id="contact">
+<!-- MAP -->
+<section class="map-section">
 
   <div class="container">
 
     <div class="section-head">
-      <div class="eyebrow">Get In Touch</div>
-      <h2>Let's Find Your Next Property</h2>
-      <p>Ready to move? Speak with our team today.</p>
-    </div>
 
-    <div class="contact-grid">
+      <div class="eyebrow">Find Us</div>
 
-      <div class="contact-card">
+      <h2>Our Office Location</h2>
 
-        <h2>Book a <span class="gold">Consultation</span></h2>
-
-        <p>
-          Tell us what you're looking for and our property specialists
-          will help you find the right option.
-        </p>
-
-        <div class="contact-item">
-          <div class="contact-icon">📍</div>
-          <div>
-            <small>Office</small>
-            <strong>Prime Estate, Beverly Hills, CA</strong>
-          </div>
-        </div>
-
-        <div class="contact-item">
-          <div class="contact-icon">📞</div>
-          <div>
-            <small>Phone</small>
-            <strong>+1 234 567 890</strong>
-          </div>
-        </div>
-
-        <div class="contact-item">
-          <div class="contact-icon">✉️</div>
-          <div>
-            <small>Email</small>
-            <strong>hello@primeestate.com</strong>
-          </div>
-        </div>
-
-        <br>
-
-        <a class="btn" href="https://wa.me/1234567890?text=Hello%20Prime%20Estate%2C%20I%20would%20like%20to%20book%20a%20consultation." target="_blank">
-          WhatsApp an Agent
-        </a>
-
-      </div>
-
-
-      <div class="map">
-
-        <iframe
-          src="https://www.google.com/maps?q=Beverly%20Hills%2C%20California&output=embed"
-          loading="lazy"
-          allowfullscreen>
-        </iframe>
-
-      </div>
+      <p>Prime Estate — Lahore, Pakistan</p>
 
     </div>
 
-  </div>
+    <div class="map">
 
-</section>
-
-<!-- CTA -->
-<section class="cta">
-
-  <div class="container">
-
-    <div class="cta-box">
-
-      <div class="eyebrow">Your Next Move Starts Here</div>
-
-      <h2>Ready to Find Your <span class="gold">Dream Home?</span></h2>
-
-      <p>Let's talk about your property goals.</p>
-
-      <a href="#contact" class="btn">Book a Consultation →</a>
+      <iframe
+        src="https://www.google.com/maps?q=Lahore%2C%20Pakistan&output=embed"
+        loading="lazy"
+        allowfullscreen>
+      </iframe>
 
     </div>
 
@@ -1231,28 +1262,40 @@ footer a:hover{
 
   <div class="container">
 
-    <div class="footer-grid">
+    <div class="footer-content">
 
       <div>
-        <h3>Prime <span class="gold">Estate</span></h3>
+
+        <h3>
+          Prime <span class="gold">Estate</span>
+        </h3>
+
         <p>
           Premium real estate solutions for buyers, sellers and investors.
         </p>
+
+        <p style="margin-top:8px;">
+          📍 Lahore, Pakistan
+        </p>
+
       </div>
 
-      <div>
-        <h3>Quick Links</h3>
-        <a href="#home">Home</a>
-        <a href="#properties">Properties</a>
-        <a href="#services">Services</a>
-        <a href="#about">About</a>
-      </div>
+      <div class="footer-contact">
 
-      <div>
         <h3>Contact</h3>
-        <a href="tel:+1234567890">+1 234 567 890</a>
-        <a href="mailto:hello@primeestate.com">hello@primeestate.com</a>
-        <a href="#contact">Book Consultation</a>
+
+        <a href="tel:+923001234567">
+          📞 +92 300 1234567
+        </a>
+
+        <a href="mailto:hello@primeestate.com">
+          ✉️ hello@primeestate.com
+        </a>
+
+        <a href="#contact">
+          Book a Consultation →
+        </a>
+
       </div>
 
     </div>
@@ -1280,22 +1323,47 @@ document.querySelectorAll(".nav-links a").forEach(link => {
   });
 });
 
-function favorite(button){
-  button.textContent = button.textContent === "♡" ? "♥" : "♡";
+function favorite(event, button){
+  event.stopPropagation();
+  button.textContent =
+    button.textContent === "♡" ? "♥" : "♡";
+}
+
+function goToBooking(){
+  document.getElementById("contact").scrollIntoView({
+    behavior:"smooth"
+  });
 }
 
 function searchProperties(){
 
-  const input = document.getElementById("searchInput").value.toLowerCase().trim();
+  const search =
+    document.getElementById("searchInput")
+    .value
+    .toLowerCase()
+    .trim();
 
-  const properties = document.querySelectorAll(".property");
+  const city =
+    document.getElementById("citySelect")
+    .value
+    .toLowerCase();
+
+  const properties =
+    document.querySelectorAll(".property");
 
   properties.forEach(property => {
 
-    const text = property.innerText.toLowerCase();
+    const text =
+      property.innerText.toLowerCase();
+
+    const matchesSearch =
+      !search || text.includes(search);
+
+    const matchesCity =
+      !city || text.includes(city);
 
     property.style.display =
-      text.includes(input) ? "" : "none";
+      matchesSearch && matchesCity ? "" : "none";
 
   });
 
