@@ -1,1432 +1,1310 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Prime Estate | Find Your Perfect Property</title>
-  <meta name="description" content="Prime Estate helps you discover premium homes, apartments and investment properties.">
-
-  <!-- Professional Favicon -->
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23131b2b'/%3E%3Cpath d='M22 48 50 23l28 25v30H61V59H39v19H22V48Z' fill='none' stroke='%23c9a86a' stroke-width='6' stroke-linejoin='round'/%3E%3Cpath d='M42 78V56h16v22' fill='%23c9a86a'/%3E%3C/svg%3E">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --navy: #131b2b;
-      --navy-2: #1b263b;
-      --gold: #c9a86a;
-      --gold-light: #e7d2a7;
-      --cream: #f7f4ee;
-      --white: #ffffff;
-      --text: #263142;
-      --muted: #707987;
-      --border: #e7e3dc;
-      --shadow: 0 18px 50px rgba(19,27,43,.10);
-      --radius: 18px;
-      --max: 1180px;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: "DM Sans", sans-serif;
-      color: var(--text);
-      background: var(--white);
-      line-height: 1.6;
-    }
-
-    img {
-      width: 100%;
-      display: block;
-      object-fit: cover;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    button,
-    input,
-    select {
-      font: inherit;
-    }
-
-    .container {
-      width: min(92%, var(--max));
-      margin: auto;
-    }
-
-    /* Top Bar */
-    .topbar {
-      background: var(--navy);
-      color: rgba(255,255,255,.78);
-      font-size: 13px;
-    }
-
-    .topbar-inner {
-      min-height: 36px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 15px;
-    }
-
-    .topbar span {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-    }
-
-    /* Navbar */
-    .navbar {
-      height: 72px;
-      background: rgba(255,255,255,.96);
-      border-bottom: 1px solid rgba(0,0,0,.06);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      backdrop-filter: blur(14px);
-    }
-
-    .nav-inner {
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .logo-mark {
-      width: 38px;
-      height: 38px;
-      border-radius: 10px;
-      background: var(--navy);
-      display: grid;
-      place-items: center;
-      color: var(--gold);
-      font-size: 20px;
-      font-weight: 700;
-    }
-
-    .logo-text {
-      font-family: "Playfair Display", serif;
-      font-size: 22px;
-      font-weight: 700;
-      color: var(--navy);
-      letter-spacing: -.3px;
-    }
-
-    .logo-text span {
-      color: var(--gold);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 30px;
-      list-style: none;
-      font-size: 14px;
-      font-weight: 600;
-    }
-
-    .nav-links a {
-      transition: .25s;
-    }
-
-    .nav-links a:hover {
-      color: var(--gold);
-    }
-
-    .nav-btn {
-      background: var(--navy);
-      color: white !important;
-      padding: 11px 18px;
-      border-radius: 9px;
-    }
-
-    .nav-btn:hover {
-      background: var(--gold);
-    }
-
-    .menu-btn {
-      display: none;
-      border: 0;
-      background: transparent;
-      font-size: 25px;
-      cursor: pointer;
-      color: var(--navy);
-    }
-
-    /* Hero */
-    .hero {
-      min-height: 610px;
-      position: relative;
-      display: flex;
-      align-items: center;
-      overflow: hidden;
-      background:
-        linear-gradient(90deg, rgba(9,16,29,.90) 0%, rgba(9,16,29,.68) 48%, rgba(9,16,29,.20) 100%),
-        url("https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=85") center/cover;
-    }
-
-    .hero-content {
-      color: white;
-      max-width: 650px;
-      padding: 70px 0 100px;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--gold-light);
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      font-size: 12px;
-      font-weight: 700;
-      margin-bottom: 17px;
-    }
-
-    .eyebrow::before {
-      content: "";
-      width: 28px;
-      height: 1px;
-      background: var(--gold);
-    }
-
-    h1 {
-      font-family: "Playfair Display", serif;
-      font-size: clamp(42px, 6vw, 70px);
-      line-height: 1.05;
-      font-weight: 600;
-      letter-spacing: -1.5px;
-      margin-bottom: 20px;
-    }
-
-    h1 span {
-      color: var(--gold-light);
-    }
-
-    .hero-text {
-      max-width: 570px;
-      color: rgba(255,255,255,.84);
-      font-size: 17px;
-      margin-bottom: 30px;
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 48px;
-      padding: 0 22px;
-      border-radius: 9px;
-      border: 1px solid transparent;
-      font-weight: 700;
-      font-size: 14px;
-      cursor: pointer;
-      transition: .25s;
-    }
-
-    .btn-gold {
-      background: var(--gold);
-      color: var(--navy);
-    }
-
-    .btn-gold:hover {
-      background: #dfbd7c;
-      transform: translateY(-2px);
-    }
-
-    .btn-outline {
-      color: white;
-      border-color: rgba(255,255,255,.45);
-      background: rgba(255,255,255,.06);
-    }
-
-    .btn-outline:hover {
-      background: white;
-      color: var(--navy);
-    }
-
-    /* Search Box */
-    .search-wrap {
-      position: relative;
-      margin-top: -46px;
-      z-index: 5;
-    }
-
-    .search-box {
-      background: white;
-      border-radius: 16px;
-      box-shadow: var(--shadow);
-      padding: 18px;
-      display: grid;
-      grid-template-columns: 1.3fr 1fr 1fr 1fr auto;
-      gap: 10px;
-      border: 1px solid var(--border);
-    }
-
-    .field {
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 9px 13px;
-      background: #fff;
-    }
-
-    .field label {
-      display: block;
-      color: var(--muted);
-      font-size: 10px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: .7px;
-      margin-bottom: 2px;
-    }
-
-    .field input,
-    .field select {
-      width: 100%;
-      border: 0;
-      outline: 0;
-      background: transparent;
-      color: var(--text);
-      font-weight: 600;
-      font-size: 13px;
-    }
-
-    .search-btn {
-      border: 0;
-      border-radius: 10px;
-      background: var(--navy);
-      color: white;
-      padding: 0 22px;
-      cursor: pointer;
-      font-weight: 700;
-      transition: .25s;
-    }
-
-    .search-btn:hover {
-      background: var(--gold);
-      color: var(--navy);
-    }
-
-    /* Sections */
-    section {
-      padding: 92px 0;
-    }
-
-    .section-head {
-      text-align: center;
-      max-width: 680px;
-      margin: 0 auto 45px;
-    }
-
-    .section-label {
-      color: var(--gold);
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      font-size: 11px;
-      font-weight: 800;
-      margin-bottom: 10px;
-    }
-
-    h2 {
-      font-family: "Playfair Display", serif;
-      font-size: clamp(31px, 4vw, 45px);
-      line-height: 1.15;
-      color: var(--navy);
-      margin-bottom: 13px;
-    }
-
-    .section-head p {
-      color: var(--muted);
-      font-size: 15px;
-    }
-
-    /* Stats */
-    .stats {
-      padding: 38px 0;
-      background: var(--cream);
-    }
-
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      text-align: center;
-    }
-
-    .stat {
-      padding: 5px 20px;
-      border-right: 1px solid var(--border);
-    }
-
-    .stat:last-child {
-      border-right: 0;
-    }
-
-    .stat strong {
-      display: block;
-      font-family: "Playfair Display", serif;
-      color: var(--navy);
-      font-size: 31px;
-    }
-
-    .stat span {
-      color: var(--muted);
-      font-size: 12px;
-    }
-
-    /* Properties */
-    .properties {
-      background: #fff;
-    }
-
-    .property-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 23px;
-    }
-
-    .property-card {
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
-      background: white;
-      transition: .3s;
-    }
-
-    .property-card:hover {
-      transform: translateY(-7px);
-      box-shadow: var(--shadow);
-    }
-
-    .property-image {
-      height: 245px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .property-image img {
-      height: 100%;
-      transition: .5s;
-    }
-
-    .property-card:hover .property-image img {
-      transform: scale(1.05);
-    }
-
-    .tag {
-      position: absolute;
-      top: 14px;
-      left: 14px;
-      background: var(--gold);
-      color: var(--navy);
-      padding: 6px 10px;
-      border-radius: 7px;
-      font-size: 10px;
-      font-weight: 800;
-      text-transform: uppercase;
-    }
-
-    .heart {
-      position: absolute;
-      top: 13px;
-      right: 13px;
-      width: 34px;
-      height: 34px;
-      display: grid;
-      place-items: center;
-      border-radius: 50%;
-      background: rgba(255,255,255,.92);
-      color: var(--navy);
-      font-size: 16px;
-    }
-
-    .property-info {
-      padding: 19px;
-    }
-
-    .price {
-      color: var(--gold);
-      font-size: 19px;
-      font-weight: 800;
-      margin-bottom: 4px;
-    }
-
-    .property-title {
-      color: var(--navy);
-      font-family: "Playfair Display", serif;
-      font-size: 20px;
-      font-weight: 600;
-      margin-bottom: 5px;
-    }
-
-    .location {
-      color: var(--muted);
-      font-size: 12px;
-      margin-bottom: 15px;
-    }
-
-    .features {
-      display: flex;
-      gap: 15px;
-      padding-top: 14px;
-      border-top: 1px solid var(--border);
-      color: var(--muted);
-      font-size: 12px;
-    }
-
-    .center-btn {
-      text-align: center;
-      margin-top: 35px;
-    }
-
-    /* Services */
-    .services {
-      background: var(--cream);
-    }
-
-    .service-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-
-    .service {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 30px 25px;
-    }
-
-    .service-icon {
-      width: 48px;
-      height: 48px;
-      display: grid;
-      place-items: center;
-      border-radius: 12px;
-      background: var(--navy);
-      color: var(--gold);
-      font-size: 21px;
-      margin-bottom: 18px;
-    }
-
-    .service h3 {
-      font-family: "Playfair Display", serif;
-      color: var(--navy);
-      font-size: 21px;
-      margin-bottom: 8px;
-    }
-
-    .service p {
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    /* About */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 70px;
-      align-items: center;
-    }
-
-    .about-images {
-      position: relative;
-      min-height: 470px;
-    }
-
-    .about-main {
-      width: 78%;
-      height: 420px;
-      border-radius: 18px;
-      overflow: hidden;
-    }
-
-    .about-main img {
-      height: 100%;
-    }
-
-    .about-small {
-      position: absolute;
-      right: 0;
-      bottom: 0;
-      width: 42%;
-      height: 190px;
-      border: 7px solid white;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: var(--shadow);
-    }
-
-    .about-small img {
-      height: 100%;
-    }
-
-    .about-content .section-label {
-      display: block;
-    }
-
-    .about-content h2 {
-      margin-bottom: 18px;
-    }
-
-    .about-content p {
-      color: var(--muted);
-      font-size: 14px;
-      margin-bottom: 15px;
-    }
-
-    .check-list {
-      list-style: none;
-      margin: 22px 0 27px;
-    }
-
-    .check-list li {
-      margin: 10px 0;
-      color: var(--text);
-      font-size: 13px;
-      font-weight: 600;
-    }
-
-    .check-list li::before {
-      content: "✓";
-      display: inline-grid;
-      place-items: center;
-      width: 21px;
-      height: 21px;
-      border-radius: 50%;
-      background: #f1eadb;
-      color: var(--gold);
-      margin-right: 9px;
-      font-size: 11px;
-    }
-
-    /* Reviews */
-    .reviews {
-      background: var(--navy);
-      color: white;
-    }
-
-    .reviews h2 {
-      color: white;
-    }
-
-    .reviews .section-head p {
-      color: rgba(255,255,255,.65);
-    }
-
-    .review-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-
-    .review {
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.10);
-      border-radius: 17px;
-      overflow: hidden;
-    }
-
-    .review-image {
-      height: 145px;
-    }
-
-    .review-image img {
-      height: 100%;
-    }
-
-    .review-body {
-      padding: 22px;
-    }
-
-    .stars {
-      color: var(--gold);
-      letter-spacing: 2px;
-      margin-bottom: 10px;
-    }
-
-    .review p {
-      color: rgba(255,255,255,.75);
-      font-size: 13px;
-      margin-bottom: 18px;
-    }
-
-    .review-user {
-      font-weight: 700;
-      font-size: 13px;
-    }
-
-    .review-user span {
-      display: block;
-      color: rgba(255,255,255,.48);
-      font-size: 11px;
-      font-weight: 400;
-    }
-
-    /* CTA */
-    .cta {
-      padding: 75px 0;
-      background: var(--cream);
-    }
-
-    .cta-box {
-      background:
-        linear-gradient(100deg, rgba(19,27,43,.98), rgba(19,27,43,.87)),
-        url("https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=80") center/cover;
-      color: white;
-      border-radius: 22px;
-      padding: 55px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 30px;
-    }
-
-    .cta-box h2 {
-      color: white;
-      margin-bottom: 8px;
-    }
-
-    .cta-box p {
-      color: rgba(255,255,255,.68);
-      font-size: 14px;
-    }
-
-    /* Footer */
-    footer {
-      background: #0c1320;
-      color: rgba(255,255,255,.65);
-      padding: 55px 0 25px;
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1.4fr 1fr 1fr 1fr;
-      gap: 35px;
-      padding-bottom: 40px;
-    }
-
-    .footer-brand .logo-text {
-      color: white;
-      display: inline-block;
-      margin-bottom: 15px;
-    }
-
-    .footer-brand p {
-      max-width: 300px;
-      font-size: 13px;
-    }
-
-    .footer-col h4 {
-      color: white;
-      font-size: 13px;
-      margin-bottom: 14px;
-    }
-
-    .footer-col a {
-      display: block;
-      font-size: 12px;
-      margin: 8px 0;
-      transition: .2s;
-    }
-
-    .footer-col a:hover {
-      color: var(--gold);
-    }
-
-    .copyright {
-      border-top: 1px solid rgba(255,255,255,.08);
-      padding-top: 20px;
-      text-align: center;
-      font-size: 11px;
-    }
-
-    /* Mobile */
-    @media (max-width: 900px) {
-      .nav-links {
-        position: absolute;
-        top: 72px;
-        left: 0;
-        right: 0;
-        background: white;
-        flex-direction: column;
-        align-items: stretch;
-        gap: 0;
-        padding: 8px 5%;
-        display: none;
-        box-shadow: 0 12px 25px rgba(0,0,0,.08);
-      }
-
-      .nav-links.active {
-        display: flex;
-      }
-
-      .nav-links li a {
-        display: block;
-        padding: 13px 0;
-        border-bottom: 1px solid var(--border);
-      }
-
-      .nav-btn {
-        margin: 8px 0;
-        text-align: center;
-      }
-
-      .menu-btn {
-        display: block;
-      }
-
-      .search-box {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .search-btn {
-        min-height: 50px;
-      }
-
-      .property-grid,
-      .service-grid,
-      .review-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .about-grid {
-        grid-template-columns: 1fr;
-        gap: 45px;
-      }
-
-      .about-images {
-        min-height: 430px;
-      }
-
-      .footer-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .topbar {
-        display: none;
-      }
-
-      .navbar {
-        height: 62px;
-      }
-
-      .nav-links {
-        top: 62px;
-      }
-
-      .logo-mark {
-        width: 34px;
-        height: 34px;
-      }
-
-      .logo-text {
-        font-size: 19px;
-      }
-
-      .hero {
-        min-height: 560px;
-        background-position: 60% center;
-      }
-
-      .hero-content {
-        padding: 60px 0 85px;
-      }
-
-      h1 {
-        font-size: 43px;
-      }
-
-      .hero-text {
-        font-size: 14px;
-      }
-
-      .search-wrap {
-        margin-top: -30px;
-      }
-
-      .search-box {
-        grid-template-columns: 1fr;
-        padding: 13px;
-      }
-
-      section {
-        padding: 65px 0;
-      }
-
-      .stats-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 20px 0;
-      }
-
-      .stat {
-        border-right: 0;
-      }
-
-      .property-grid,
-      .service-grid,
-      .review-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .property-image {
-        height: 235px;
-      }
-
-      .about-images {
-        min-height: 350px;
-      }
-
-      .about-main {
-        width: 83%;
-        height: 330px;
-      }
-
-      .about-small {
-        width: 43%;
-        height: 145px;
-      }
-
-      .cta-box {
-        padding: 35px 25px;
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .footer-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 28px 20px;
-      }
-
-      .footer-brand {
-        grid-column: 1 / -1;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Prime Estate | Premium Real Estate</title>
+
+<meta name="description" content="Prime Estate — Discover premium properties and find your perfect home.">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23090909'/%3E%3Cpath d='M22 48 50 24l28 24v30H61V59H39v19H22Z' fill='%23d4af37'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --black:#080808;
+  --black2:#101010;
+  --card:#151515;
+  --gold:#d4af37;
+  --gold2:#f1d477;
+  --white:#fff;
+  --muted:#aaa;
+  --border:rgba(212,175,55,.18);
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:"DM Sans",sans-serif;
+  background:var(--black);
+  color:var(--white);
+  line-height:1.6;
+}
+
+img{
+  width:100%;
+  display:block;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+.container{
+  width:min(1180px,92%);
+  margin:auto;
+}
+
+.gold{
+  color:var(--gold);
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:9px;
+  padding:13px 21px;
+  border-radius:7px;
+  border:1px solid var(--gold);
+  background:var(--gold);
+  color:#090909;
+  font-weight:700;
+  transition:.3s;
+  cursor:pointer;
+}
+
+.btn:hover{
+  background:transparent;
+  color:var(--gold);
+  transform:translateY(-2px);
+}
+
+.btn-outline{
+  background:transparent;
+  color:var(--gold);
+}
+
+.btn-outline:hover{
+  background:var(--gold);
+  color:#000;
+}
+
+/* NAVBAR */
+header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:rgba(8,8,8,.94);
+  backdrop-filter:blur(15px);
+  border-bottom:1px solid var(--border);
+}
+
+.nav{
+  min-height:72px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:11px;
+  font-family:"Playfair Display",serif;
+  font-size:25px;
+  font-weight:700;
+}
+
+.logo-mark{
+  width:36px;
+  height:36px;
+  border:1px solid var(--gold);
+  border-radius:8px;
+  display:grid;
+  place-items:center;
+  color:var(--gold);
+  font-size:19px;
+}
+
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:27px;
+  list-style:none;
+}
+
+.nav-links a{
+  color:#ddd;
+  font-size:14px;
+  transition:.3s;
+}
+
+.nav-links a:hover{
+  color:var(--gold);
+}
+
+.menu-btn{
+  display:none;
+  background:none;
+  border:0;
+  color:white;
+  font-size:28px;
+  cursor:pointer;
+}
+
+/* HERO */
+.hero{
+  min-height:680px;
+  display:flex;
+  align-items:center;
+  position:relative;
+  overflow:hidden;
+  background:
+    linear-gradient(90deg,rgba(0,0,0,.88) 0%,rgba(0,0,0,.68) 48%,rgba(0,0,0,.3)),
+    url("https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=2000&q=85") center/cover;
+}
+
+.hero-content{
+  max-width:730px;
+  padding:100px 0;
+}
+
+.eyebrow{
+  color:var(--gold);
+  text-transform:uppercase;
+  letter-spacing:3px;
+  font-size:13px;
+  font-weight:700;
+  margin-bottom:18px;
+}
+
+.hero h1{
+  font-family:"Playfair Display",serif;
+  font-size:clamp(46px,7vw,78px);
+  line-height:1.02;
+  margin-bottom:23px;
+}
+
+.hero p{
+  max-width:590px;
+  color:#ddd;
+  font-size:17px;
+  margin-bottom:32px;
+}
+
+.hero-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+}
+
+/* SEARCH */
+.search-wrap{
+  margin-top:-65px;
+  position:relative;
+  z-index:5;
+}
+
+.search-box{
+  background:#111;
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:23px;
+  box-shadow:0 20px 60px rgba(0,0,0,.5);
+}
+
+.search-title{
+  font-family:"Playfair Display",serif;
+  font-size:22px;
+  margin-bottom:17px;
+}
+
+.search-grid{
+  display:grid;
+  grid-template-columns:1.3fr 1fr 1fr auto;
+  gap:11px;
+}
+
+.input{
+  width:100%;
+  padding:14px 15px;
+  background:#090909;
+  border:1px solid #292929;
+  color:white;
+  border-radius:7px;
+  outline:none;
+}
+
+.input:focus{
+  border-color:var(--gold);
+}
+
+/* SECTIONS */
+section{
+  padding:95px 0;
+}
+
+.section-head{
+  text-align:center;
+  max-width:700px;
+  margin:0 auto 48px;
+}
+
+.section-head .eyebrow{
+  margin-bottom:10px;
+}
+
+.section-head h2{
+  font-family:"Playfair Display",serif;
+  font-size:clamp(32px,5vw,48px);
+  margin-bottom:13px;
+}
+
+.section-head p{
+  color:var(--muted);
+}
+
+/* STATS */
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  border:1px solid var(--border);
+  border-radius:13px;
+  overflow:hidden;
+  margin-top:65px;
+}
+
+.stat{
+  text-align:center;
+  padding:27px 15px;
+  background:#0d0d0d;
+  border-right:1px solid var(--border);
+}
+
+.stat:last-child{
+  border-right:0;
+}
+
+.stat strong{
+  display:block;
+  color:var(--gold);
+  font-size:29px;
+  margin-bottom:4px;
+}
+
+.stat span{
+  color:#999;
+  font-size:13px;
+}
+
+/* PROPERTIES */
+.properties{
+  background:#0d0d0d;
+}
+
+.property-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+}
+
+.property{
+  background:var(--card);
+  border:1px solid #242424;
+  border-radius:13px;
+  overflow:hidden;
+  transition:.35s;
+}
+
+.property:hover{
+  transform:translateY(-7px);
+  border-color:var(--gold);
+  box-shadow:0 20px 45px rgba(0,0,0,.35);
+}
+
+.property-img{
+  height:250px;
+  position:relative;
+  overflow:hidden;
+}
+
+.property-img img{
+  height:100%;
+  object-fit:cover;
+  transition:.5s;
+}
+
+.property:hover .property-img img{
+  transform:scale(1.05);
+}
+
+.tag{
+  position:absolute;
+  top:14px;
+  left:14px;
+  background:var(--gold);
+  color:#000;
+  padding:6px 11px;
+  border-radius:5px;
+  font-size:11px;
+  font-weight:800;
+  text-transform:uppercase;
+}
+
+.heart{
+  position:absolute;
+  top:13px;
+  right:13px;
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  border:1px solid rgba(255,255,255,.3);
+  background:rgba(0,0,0,.55);
+  color:white;
+  cursor:pointer;
+  font-size:18px;
+}
+
+.property-info{
+  padding:21px;
+}
+
+.property-info h3{
+  font-family:"Playfair Display",serif;
+  font-size:23px;
+  margin-bottom:5px;
+}
+
+.location{
+  color:#999;
+  font-size:13px;
+  margin-bottom:16px;
+}
+
+.price{
+  color:var(--gold);
+  font-size:22px;
+  font-weight:700;
+  margin-bottom:15px;
+}
+
+.features{
+  display:flex;
+  gap:15px;
+  border-top:1px solid #282828;
+  padding-top:15px;
+  color:#aaa;
+  font-size:12px;
+}
+
+/* SERVICES */
+.services-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+
+.service{
+  padding:31px;
+  background:#111;
+  border:1px solid #222;
+  border-radius:12px;
+  transition:.3s;
+}
+
+.service:hover{
+  border-color:var(--gold);
+}
+
+.service-icon{
+  font-size:30px;
+  margin-bottom:16px;
+}
+
+.service h3{
+  font-family:"Playfair Display",serif;
+  font-size:23px;
+  margin-bottom:8px;
+}
+
+.service p{
+  color:#999;
+  font-size:14px;
+}
+
+/* ABOUT */
+.about{
+  background:#0d0d0d;
+}
+
+.about-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:70px;
+  align-items:center;
+}
+
+.about-img{
+  height:500px;
+  border-radius:13px;
+  overflow:hidden;
+  border:1px solid var(--border);
+}
+
+.about-img img{
+  height:100%;
+  object-fit:cover;
+}
+
+.about h2{
+  font-family:"Playfair Display",serif;
+  font-size:clamp(34px,5vw,51px);
+  line-height:1.1;
+  margin-bottom:20px;
+}
+
+.about p{
+  color:#aaa;
+  margin-bottom:19px;
+}
+
+.checks{
+  list-style:none;
+  margin:25px 0;
+}
+
+.checks li{
+  margin:11px 0;
+  color:#ddd;
+}
+
+.checks li::before{
+  content:"✓";
+  color:var(--gold);
+  font-weight:bold;
+  margin-right:10px;
+}
+
+/* REVIEWS */
+.review-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+
+.review{
+  background:#111;
+  border:1px solid #242424;
+  border-radius:12px;
+  padding:26px;
+}
+
+.stars{
+  color:var(--gold);
+  letter-spacing:3px;
+  margin-bottom:17px;
+}
+
+.review p{
+  color:#bbb;
+  font-size:14px;
+  margin-bottom:21px;
+}
+
+.reviewer{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.reviewer img{
+  width:48px;
+  height:48px;
+  object-fit:cover;
+  border-radius:50%;
+  border:2px solid var(--gold);
+}
+
+.reviewer strong{
+  display:block;
+}
+
+.reviewer span{
+  color:#777;
+  font-size:12px;
+}
+
+/* MAP + CONTACT */
+.contact{
+  background:#0d0d0d;
+}
+
+.contact-grid{
+  display:grid;
+  grid-template-columns:1fr 1.2fr;
+  gap:24px;
+}
+
+.contact-card{
+  background:#111;
+  border:1px solid var(--border);
+  border-radius:13px;
+  padding:35px;
+}
+
+.contact-card h2{
+  font-family:"Playfair Display",serif;
+  font-size:39px;
+  margin-bottom:13px;
+}
+
+.contact-card p{
+  color:#999;
+  margin-bottom:25px;
+}
+
+.contact-item{
+  display:flex;
+  gap:13px;
+  padding:15px 0;
+  border-bottom:1px solid #242424;
+}
+
+.contact-item:last-child{
+  border-bottom:0;
+}
+
+.contact-icon{
+  color:var(--gold);
+  font-size:20px;
+}
+
+.contact-item small{
+  display:block;
+  color:#777;
+  margin-bottom:2px;
+}
+
+.contact-item strong{
+  font-size:14px;
+}
+
+.map{
+  min-height:420px;
+  border-radius:13px;
+  overflow:hidden;
+  border:1px solid var(--border);
+  background:#111;
+}
+
+.map iframe{
+  width:100%;
+  height:100%;
+  min-height:420px;
+  border:0;
+  filter:grayscale(100%) contrast(1.15);
+}
+
+/* CTA */
+.cta{
+  padding:80px 0;
+}
+
+.cta-box{
+  position:relative;
+  overflow:hidden;
+  border:1px solid var(--gold);
+  border-radius:16px;
+  padding:65px 40px;
+  text-align:center;
+  background:
+    linear-gradient(rgba(0,0,0,.76),rgba(0,0,0,.76)),
+    url("https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1800&q=85") center/cover;
+}
+
+.cta-box h2{
+  font-family:"Playfair Display",serif;
+  font-size:clamp(33px,5vw,50px);
+  margin-bottom:12px;
+}
+
+.cta-box p{
+  color:#ddd;
+  margin-bottom:25px;
+}
+
+/* FOOTER */
+footer{
+  border-top:1px solid #222;
+  padding:55px 0 25px;
+}
+
+.footer-grid{
+  display:grid;
+  grid-template-columns:1.5fr 1fr 1fr;
+  gap:50px;
+  padding-bottom:40px;
+}
+
+footer h3{
+  font-family:"Playfair Display",serif;
+  font-size:23px;
+  margin-bottom:14px;
+}
+
+footer p, footer a{
+  color:#888;
+  font-size:14px;
+}
+
+footer a{
+  display:block;
+  margin:8px 0;
+}
+
+footer a:hover{
+  color:var(--gold);
+}
+
+.copyright{
+  border-top:1px solid #222;
+  padding-top:22px;
+  text-align:center;
+  color:#666;
+  font-size:12px;
+}
+
+/* MOBILE */
+@media(max-width:900px){
+  .nav-links{
+    position:absolute;
+    top:72px;
+    left:0;
+    width:100%;
+    background:#090909;
+    border-bottom:1px solid var(--border);
+    display:none;
+    flex-direction:column;
+    padding:25px;
+  }
+
+  .nav-links.active{
+    display:flex;
+  }
+
+  .menu-btn{
+    display:block;
+  }
+
+  .nav .btn{
+    display:none;
+  }
+
+  .search-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .property-grid,
+  .review-grid,
+  .services-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .about-grid,
+  .contact-grid{
+    grid-template-columns:1fr;
+  }
+
+  .about-img{
+    height:390px;
+  }
+}
+
+@media(max-width:600px){
+  .hero{
+    min-height:620px;
+  }
+
+  .hero-content{
+    padding:80px 0;
+  }
+
+  .hero h1{
+    font-size:45px;
+  }
+
+  .hero p{
+    font-size:15px;
+  }
+
+  section{
+    padding:70px 0;
+  }
+
+  .search-wrap{
+    margin-top:-40px;
+  }
+
+  .search-grid{
+    grid-template-columns:1fr;
+  }
+
+  .stats{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .stat{
+    border-right:1px solid var(--border);
+    border-bottom:1px solid var(--border);
+  }
+
+  .property-grid,
+  .review-grid,
+  .services-grid{
+    grid-template-columns:1fr;
+  }
+
+  .about-img{
+    height:300px;
+  }
+
+  .contact-card{
+    padding:25px;
+  }
+
+  .map,
+  .map iframe{
+    min-height:330px;
+  }
+
+  .cta-box{
+    padding:50px 22px;
+  }
+
+  .footer-grid{
+    grid-template-columns:1fr;
+    gap:28px;
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <!-- Top Bar -->
-  <div class="topbar">
-    <div class="container topbar-inner">
-      <span>📍 Your Trusted Property Partner</span>
-      <span>✦ Premium Homes & Smart Investments</span>
+<header>
+  <div class="container nav">
+
+    <a href="#home" class="logo">
+      <span class="logo-mark">⌂</span>
+      Prime <span class="gold">Estate</span>
+    </a>
+
+    <button class="menu-btn" id="menuBtn">☰</button>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#properties">Properties</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <a href="#contact" class="btn">Book a Consultation</a>
+
+  </div>
+</header>
+
+<main>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="container">
+    <div class="hero-content">
+
+      <div class="eyebrow">Premium Real Estate</div>
+
+      <h1>
+        Find a Place<br>
+        <span class="gold">You'll Love.</span>
+      </h1>
+
+      <p>
+        Discover exceptional homes, apartments and investment properties
+        selected for modern living and long-term value.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#properties" class="btn">Explore Properties →</a>
+        <a href="#contact" class="btn btn-outline">Book a Consultation</a>
+      </div>
+
     </div>
   </div>
+</section>
 
-  <!-- Navbar -->
-  <header class="navbar">
-    <div class="container nav-inner">
+<!-- SEARCH -->
+<div class="search-wrap">
+  <div class="container">
 
-      <a href="#" class="logo">
-        <div class="logo-mark">⌂</div>
-        <div class="logo-text">Prime <span>Estate</span></div>
-      </a>
+    <div class="search-box">
 
-      <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
+      <div class="search-title">Find Your Perfect Property</div>
 
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#properties">Properties</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#reviews">Reviews</a></li>
-        <li><a href="#contact" class="nav-btn">Contact Us</a></li>
+      <div class="search-grid">
+
+        <input id="searchInput" class="input" type="text" placeholder="Search location or property">
+
+        <select class="input" id="typeSelect">
+          <option value="">Property Type</option>
+          <option>Villa</option>
+          <option>Apartment</option>
+          <option>House</option>
+        </select>
+
+        <select class="input" id="priceSelect">
+          <option value="">Price Range</option>
+          <option>Under $500K</option>
+          <option>$500K - $1M</option>
+          <option>$1M+</option>
+        </select>
+
+        <button class="btn" onclick="searchProperties()">Search</button>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="container">
+
+  <div class="stats">
+
+    <div class="stat">
+      <strong>250+</strong>
+      <span>Properties Listed</span>
+    </div>
+
+    <div class="stat">
+      <strong>180+</strong>
+      <span>Happy Clients</span>
+    </div>
+
+    <div class="stat">
+      <strong>12+</strong>
+      <span>Years Experience</span>
+    </div>
+
+    <div class="stat">
+      <strong>15</strong>
+      <span>Prime Locations</span>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- PROPERTIES -->
+<section class="properties" id="properties">
+
+  <div class="container">
+
+    <div class="section-head">
+      <div class="eyebrow">Featured Collection</div>
+      <h2>Explore Our Properties</h2>
+      <p>Handpicked properties designed around comfort, lifestyle and value.</p>
+    </div>
+
+    <div class="property-grid" id="propertyGrid">
+
+      <article class="property">
+        <div class="property-img">
+          <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=85" alt="Luxury villa">
+          <span class="tag">For Sale</span>
+          <button class="heart" onclick="favorite(this)">♡</button>
+        </div>
+
+        <div class="property-info">
+          <h3>The Grand Villa</h3>
+          <div class="location">📍 Beverly Hills, California</div>
+          <div class="price">$1,250,000</div>
+
+          <div class="features">
+            <span>🛏 4 Beds</span>
+            <span>🛁 3 Baths</span>
+            <span>📐 3,200 sqft</span>
+          </div>
+        </div>
+      </article>
+
+
+      <article class="property">
+        <div class="property-img">
+          <img src="https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=1200&q=85" alt="Modern home">
+          <span class="tag">Featured</span>
+          <button class="heart" onclick="favorite(this)">♡</button>
+        </div>
+
+        <div class="property-info">
+          <h3>Ocean View Residence</h3>
+          <div class="location">📍 Miami, Florida</div>
+          <div class="price">$685,000</div>
+
+          <div class="features">
+            <span>🛏 3 Beds</span>
+            <span>🛁 2 Baths</span>
+            <span>📐 2,100 sqft</span>
+          </div>
+        </div>
+      </article>
+
+
+      <article class="property">
+        <div class="property-img">
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=85" alt="Family home">
+          <span class="tag">For Rent</span>
+          <button class="heart" onclick="favorite(this)">♡</button>
+        </div>
+
+        <div class="property-info">
+          <h3>Modern Family Home</h3>
+          <div class="location">📍 Austin, Texas</div>
+          <div class="price">$3,400 / month</div>
+
+          <div class="features">
+            <span>🛏 4 Beds</span>
+            <span>🛁 3 Baths</span>
+            <span>📐 2,750 sqft</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+
+  <div class="container">
+
+    <div class="section-head">
+      <div class="eyebrow">What We Do</div>
+      <h2>Real Estate Made Simple</h2>
+      <p>Professional support from property search to closing.</p>
+    </div>
+
+    <div class="services-grid">
+
+      <div class="service">
+        <div class="service-icon">🏠</div>
+        <h3>Buy a Property</h3>
+        <p>Find a property that matches your lifestyle, location and budget.</p>
+      </div>
+
+      <div class="service">
+        <div class="service-icon">🔑</div>
+        <h3>Sell Your Property</h3>
+        <p>Present your property professionally and connect with qualified buyers.</p>
+      </div>
+
+      <div class="service">
+        <div class="service-icon">📈</div>
+        <h3>Property Investment</h3>
+        <p>Explore property opportunities designed for long-term growth.</p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+
+  <div class="container about-grid">
+
+    <div class="about-img">
+      <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1400&q=85" alt="Luxury interior">
+    </div>
+
+    <div>
+
+      <div class="eyebrow">Why Prime Estate</div>
+
+      <h2>Property decisions deserve a <span class="gold">premium experience.</span></h2>
+
+      <p>
+        Prime Estate connects people with exceptional properties through
+        professional service, transparent communication and carefully
+        selected listings.
+      </p>
+
+      <ul class="checks">
+        <li>Verified property listings</li>
+        <li>Professional property guidance</li>
+        <li>Personalized property search</li>
+        <li>Dedicated client support</li>
       </ul>
 
-    </div>
-  </header>
+      <a href="#contact" class="btn">Talk to an Agent →</a>
 
-  <!-- Hero -->
-  <main id="home">
-    <section class="hero">
-      <div class="container">
-        <div class="hero-content">
-
-          <div class="eyebrow">Premium Real Estate</div>
-
-          <h1>Find a place you can truly <span>call home.</span></h1>
-
-          <p class="hero-text">
-            Discover carefully selected homes, apartments and investment
-            properties with Prime Estate. Your next chapter starts here.
-          </p>
-
-          <div class="hero-actions">
-            <a href="#properties" class="btn btn-gold">Explore Properties</a>
-            <a href="#contact" class="btn btn-outline">Talk to an Agent</a>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- Search -->
-    <div class="container search-wrap">
-      <form class="search-box" onsubmit="return searchProperties(event)">
-
-        <div class="field">
-          <label>Location</label>
-          <input id="locationInput" type="text" placeholder="City or area">
-        </div>
-
-        <div class="field">
-          <label>Property Type</label>
-          <select id="typeInput">
-            <option value="">Any type</option>
-            <option>House</option>
-            <option>Apartment</option>
-            <option>Villa</option>
-            <option>Commercial</option>
-          </select>
-        </div>
-
-        <div class="field">
-          <label>Purpose</label>
-          <select>
-            <option>Buy</option>
-            <option>Rent</option>
-            <option>Invest</option>
-          </select>
-        </div>
-
-        <div class="field">
-          <label>Budget</label>
-          <select>
-            <option>Any budget</option>
-            <option>Under $250k</option>
-            <option>$250k – $500k</option>
-            <option>$500k+</option>
-          </select>
-        </div>
-
-        <button class="search-btn" type="submit">Search</button>
-
-      </form>
     </div>
 
-    <!-- Stats -->
-    <section class="stats">
-      <div class="container stats-grid">
-        <div class="stat">
-          <strong>250+</strong>
-          <span>Properties Listed</span>
-        </div>
-        <div class="stat">
-          <strong>180+</strong>
-          <span>Happy Clients</span>
-        </div>
-        <div class="stat">
-          <strong>12+</strong>
-          <span>Years Experience</span>
-        </div>
-        <div class="stat">
-          <strong>98%</strong>
-          <span>Client Satisfaction</span>
-        </div>
-      </div>
-    </section>
+  </div>
 
-    <!-- Properties -->
-    <section class="properties" id="properties">
-      <div class="container">
+</section>
 
-        <div class="section-head">
-          <div class="section-label">Featured Collection</div>
-          <h2>Homes worth coming home to.</h2>
-          <p>
-            Explore a selection of beautiful properties chosen for comfort,
-            location and long-term value.
-          </p>
-        </div>
+<!-- REVIEWS -->
+<section>
 
-        <div class="property-grid" id="propertyGrid">
+  <div class="container">
 
-          <article class="property-card" data-location="Beverly Hills" data-type="Villa">
-            <div class="property-image">
-              <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1000&q=85" alt="Luxury villa">
-              <span class="tag">For Sale</span>
-              <span class="heart">♡</span>
-            </div>
-            <div class="property-info">
-              <div class="price">$1,250,000</div>
-              <div class="property-title">The Grand Villa</div>
-              <div class="location">📍 Beverly Hills, California</div>
-              <div class="features">
-                <span>🛏 4 Beds</span>
-                <span>🛁 3 Baths</span>
-                <span>📐 3,200 ft²</span>
-              </div>
-            </div>
-          </article>
+    <div class="section-head">
+      <div class="eyebrow">Client Stories</div>
+      <h2>What Our Clients Say</h2>
+      <p>Real experiences from people who found their next place with us.</p>
+    </div>
 
-          <article class="property-card" data-location="Miami" data-type="Apartment">
-            <div class="property-image">
-              <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1000&q=85" alt="Modern apartment">
-              <span class="tag">For Sale</span>
-              <span class="heart">♡</span>
-            </div>
-            <div class="property-info">
-              <div class="price">$685,000</div>
-              <div class="property-title">Ocean View Residence</div>
-              <div class="location">📍 Miami, Florida</div>
-              <div class="features">
-                <span>🛏 3 Beds</span>
-                <span>🛁 2 Baths</span>
-                <span>📐 1,850 ft²</span>
-              </div>
-            </div>
-          </article>
+    <div class="review-grid">
 
-          <article class="property-card" data-location="Austin" data-type="House">
-            <div class="property-image">
-              <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1000&q=85" alt="Modern house">
-              <span class="tag">For Rent</span>
-              <span class="heart">♡</span>
-            </div>
-            <div class="property-info">
-              <div class="price">$3,400 / mo</div>
-              <div class="property-title">Modern Family Home</div>
-              <div class="location">📍 Austin, Texas</div>
-              <div class="features">
-                <span>🛏 4 Beds</span>
-                <span>🛁 3 Baths</span>
-                <span>📐 2,400 ft²</span>
-              </div>
-            </div>
-          </article>
+      <div class="review">
+        <div class="stars">★★★★★</div>
 
-        </div>
+        <p>
+          “Prime Estate made the entire process simple. We found our dream
+          home and received excellent support throughout.”
+        </p>
 
-        <div class="center-btn">
-          <a href="#contact" class="btn btn-gold">View More Properties →</a>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- Services -->
-    <section class="services" id="services">
-      <div class="container">
-
-        <div class="section-head">
-          <div class="section-label">What We Do</div>
-          <h2>Real estate made simpler.</h2>
-          <p>
-            From finding the right home to making a smart investment,
-            we're here to guide you.
-          </p>
-        </div>
-
-        <div class="service-grid">
-
-          <div class="service">
-            <div class="service-icon">⌂</div>
-            <h3>Buy a Property</h3>
-            <p>
-              Find a home that fits your lifestyle, budget and future plans
-              with our carefully selected listings.
-            </p>
-          </div>
-
-          <div class="service">
-            <div class="service-icon">◆</div>
-            <h3>Sell Your Property</h3>
-            <p>
-              Position your property professionally and connect with serious
-              buyers through our network.
-            </p>
-          </div>
-
-          <div class="service">
-            <div class="service-icon">↗</div>
-            <h3>Smart Investments</h3>
-            <p>
-              Explore opportunities designed around location, value and
-              long-term investment potential.
-            </p>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- About -->
-    <section id="about">
-      <div class="container about-grid">
-
-        <div class="about-images">
-          <div class="about-main">
-            <img src="https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=1200&q=85" alt="Beautiful modern home">
-          </div>
-
-          <div class="about-small">
-            <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=85" alt="Luxury interior">
-          </div>
-        </div>
-
-        <div class="about-content">
-          <div class="section-label">Why Prime Estate</div>
-
-          <h2>A better way to find your next property.</h2>
-
-          <p>
-            At Prime Estate, we believe property decisions should feel clear,
-            personal and confident — not complicated.
-          </p>
-
-          <p>
-            Our team combines local knowledge, market insight and a
-            client-first approach to help you make the right move.
-          </p>
-
-          <ul class="check-list">
-            <li>Carefully selected property listings</li>
-            <li>Professional and transparent guidance</li>
-            <li>Personalized property recommendations</li>
-            <li>Support from first viewing to closing</li>
-          </ul>
-
-          <a href="#contact" class="btn btn-gold">Meet Our Team</a>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- Reviews -->
-    <section class="reviews" id="reviews">
-      <div class="container">
-
-        <div class="section-head">
-          <div class="section-label">Client Stories</div>
-          <h2>Homes that made people happy.</h2>
-          <p>
-            Real relationships are at the heart of everything we do.
-          </p>
-        </div>
-
-        <div class="review-grid">
-
-          <article class="review">
-            <div class="review-image">
-              <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=900&q=85" alt="Client home">
-            </div>
-            <div class="review-body">
-              <div class="stars">★★★★★</div>
-              <p>
-                “Prime Estate made the entire process simple. They understood
-                exactly what we wanted and found us a beautiful home.”
-              </p>
-              <div class="review-user">
-                Sarah & James
-                <span>New Homeowners</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="review">
-            <div class="review-image">
-              <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=900&q=85" alt="Beautiful client property">
-            </div>
-            <div class="review-body">
-              <div class="stars">★★★★★</div>
-              <p>
-                “Professional, responsive and honest. We always knew what was
-                happening and felt confident throughout the process.”
-              </p>
-              <div class="review-user">
-                Daniel Morgan
-                <span>Property Investor</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="review">
-            <div class="review-image">
-              <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=900&q=85" alt="Luxury apartment">
-            </div>
-            <div class="review-body">
-              <div class="stars">★★★★★</div>
-              <p>
-                “The attention to detail was excellent. Prime Estate helped us
-                find a property that felt right from day one.”
-              </p>
-              <div class="review-user">
-                Emily Carter
-                <span>Home Buyer</span>
-              </div>
-            </div>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="cta" id="contact">
-      <div class="container">
-
-        <div class="cta-box">
+        <div class="reviewer">
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80" alt="Sarah">
           <div>
-            <h2>Ready to make your next move?</h2>
-            <p>Tell us what you're looking for and let's find it together.</p>
+            <strong>Sarah & James</strong>
+            <span>Home Buyers</span>
           </div>
-
-          <a
-            class="btn btn-gold"
-            href="https://wa.me/1234567890?text=Hello%20Prime%20Estate%2C%20I%27m%20interested%20in%20a%20property."
-            target="_blank"
-            rel="noopener"
-          >
-            Chat on WhatsApp
-          </a>
         </div>
-
-      </div>
-    </section>
-
-  </main>
-
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-
-      <div class="footer-grid">
-
-        <div class="footer-brand">
-          <div class="logo-text">Prime <span>Estate</span></div>
-          <p>
-            Helping people find beautiful homes and smarter property
-            opportunities with confidence.
-          </p>
-        </div>
-
-        <div class="footer-col">
-          <h4>Explore</h4>
-          <a href="#properties">Properties</a>
-          <a href="#services">Services</a>
-          <a href="#about">About Us</a>
-          <a href="#reviews">Reviews</a>
-        </div>
-
-        <div class="footer-col">
-          <h4>Properties</h4>
-          <a href="#properties">Homes</a>
-          <a href="#properties">Apartments</a>
-          <a href="#properties">Villas</a>
-          <a href="#properties">Commercial</a>
-        </div>
-
-        <div class="footer-col">
-          <h4>Contact</h4>
-          <a href="tel:+1234567890">+1 234 567 890</a>
-          <a href="mailto:hello@primeestate.com">hello@primeestate.com</a>
-          <a href="#contact">Book a Consultation</a>
-        </div>
-
       </div>
 
-      <div class="copyright">
-        © 2026 Prime Estate. All rights reserved.
+
+      <div class="review">
+        <div class="stars">★★★★★</div>
+
+        <p>
+          “Professional communication, beautiful properties and a very smooth
+          experience from the first call to closing.”
+        </p>
+
+        <div class="reviewer">
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80" alt="Daniel">
+          <div>
+            <strong>Daniel Morgan</strong>
+            <span>Property Investor</span>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="review">
+        <div class="stars">★★★★★</div>
+
+        <p>
+          “The team understood exactly what we were looking for and helped us
+          find a beautiful property within our requirements.”
+        </p>
+
+        <div class="reviewer">
+          <img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=200&q=80" alt="Emily">
+          <div>
+            <strong>Emily Carter</strong>
+            <span>Home Buyer</span>
+          </div>
+        </div>
       </div>
 
     </div>
-  </footer>
 
-  <script>
-    // Mobile menu
-    const menuBtn = document.getElementById("menuBtn");
-    const navLinks = document.getElementById("navLinks");
+  </div>
 
-    menuBtn.addEventListener("click", () => {
-      navLinks.classList.toggle("active");
-      menuBtn.textContent = navLinks.classList.contains("active") ? "✕" : "☰";
-    });
+</section>
 
-    // Close mobile menu after clicking a link
-    document.querySelectorAll(".nav-links a").forEach(link => {
-      link.addEventListener("click", () => {
-        navLinks.classList.remove("active");
-        menuBtn.textContent = "☰";
-      });
-    });
+<!-- CONTACT + MAP -->
+<section class="contact" id="contact">
 
-    // Property search
-    function searchProperties(event) {
-      event.preventDefault();
+  <div class="container">
 
-      const location = document.getElementById("locationInput").value.toLowerCase().trim();
-      const type = document.getElementById("typeInput").value.toLowerCase().trim();
-      const cards = document.querySelectorAll(".property-card");
+    <div class="section-head">
+      <div class="eyebrow">Get In Touch</div>
+      <h2>Let's Find Your Next Property</h2>
+      <p>Ready to move? Speak with our team today.</p>
+    </div>
 
-      let found = 0;
+    <div class="contact-grid">
 
-      cards.forEach(card => {
-        const cardLocation = card.dataset.location.toLowerCase();
-        const cardType = card.dataset.type.toLowerCase();
+      <div class="contact-card">
 
-        const locationMatch = !location || cardLocation.includes(location);
-        const typeMatch = !type || cardType === type;
+        <h2>Book a <span class="gold">Consultation</span></h2>
 
-        if (locationMatch && typeMatch) {
-          card.style.display = "";
-          found++;
-        } else {
-          card.style.display = "none";
-        }
-      });
+        <p>
+          Tell us what you're looking for and our property specialists
+          will help you find the right option.
+        </p>
 
-      document.getElementById("properties").scrollIntoView({
-        behavior: "smooth"
-      });
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <small>Office</small>
+            <strong>Prime Estate, Beverly Hills, CA</strong>
+          </div>
+        </div>
 
-      if (found === 0) {
-        setTimeout(() => {
-          alert("No matching demo properties found. Try another location or property type.");
-          cards.forEach(card => card.style.display = "");
-        }, 500);
-      }
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div>
+            <small>Phone</small>
+            <strong>+1 234 567 890</strong>
+          </div>
+        </div>
 
-      return false;
-    }
+        <div class="contact-item">
+          <div class="contact-icon">✉️</div>
+          <div>
+            <small>Email</small>
+            <strong>hello@primeestate.com</strong>
+          </div>
+        </div>
 
-    // Favorite buttons
-    document.querySelectorAll(".heart").forEach(button => {
-      button.addEventListener("click", () => {
-        button.textContent = button.textContent === "♡" ? "♥" : "♡";
-      });
-    });
-  </script>
+        <br>
+
+        <a class="btn" href="https://wa.me/1234567890?text=Hello%20Prime%20Estate%2C%20I%20would%20like%20to%20book%20a%20consultation." target="_blank">
+          WhatsApp an Agent
+        </a>
+
+      </div>
+
+
+      <div class="map">
+
+        <iframe
+          src="https://www.google.com/maps?q=Beverly%20Hills%2C%20California&output=embed"
+          loading="lazy"
+          allowfullscreen>
+        </iframe>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- CTA -->
+<section class="cta">
+
+  <div class="container">
+
+    <div class="cta-box">
+
+      <div class="eyebrow">Your Next Move Starts Here</div>
+
+      <h2>Ready to Find Your <span class="gold">Dream Home?</span></h2>
+
+      <p>Let's talk about your property goals.</p>
+
+      <a href="#contact" class="btn">Book a Consultation →</a>
+
+    </div>
+
+  </div>
+
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+
+  <div class="container">
+
+    <div class="footer-grid">
+
+      <div>
+        <h3>Prime <span class="gold">Estate</span></h3>
+        <p>
+          Premium real estate solutions for buyers, sellers and investors.
+        </p>
+      </div>
+
+      <div>
+        <h3>Quick Links</h3>
+        <a href="#home">Home</a>
+        <a href="#properties">Properties</a>
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+      </div>
+
+      <div>
+        <h3>Contact</h3>
+        <a href="tel:+1234567890">+1 234 567 890</a>
+        <a href="mailto:hello@primeestate.com">hello@primeestate.com</a>
+        <a href="#contact">Book Consultation</a>
+      </div>
+
+    </div>
+
+    <div class="copyright">
+      © 2026 Prime Estate. All rights reserved.
+    </div>
+
+  </div>
+
+</footer>
+
+<script>
+
+const menuBtn = document.getElementById("menuBtn");
+const navLinks = document.getElementById("navLinks");
+
+menuBtn.addEventListener("click", () => {
+  navLinks.classList.toggle("active");
+});
+
+document.querySelectorAll(".nav-links a").forEach(link => {
+  link.addEventListener("click", () => {
+    navLinks.classList.remove("active");
+  });
+});
+
+function favorite(button){
+  button.textContent = button.textContent === "♡" ? "♥" : "♡";
+}
+
+function searchProperties(){
+
+  const input = document.getElementById("searchInput").value.toLowerCase().trim();
+
+  const properties = document.querySelectorAll(".property");
+
+  properties.forEach(property => {
+
+    const text = property.innerText.toLowerCase();
+
+    property.style.display =
+      text.includes(input) ? "" : "none";
+
+  });
+
+  document.getElementById("properties").scrollIntoView({
+    behavior:"smooth"
+  });
+}
+
+</script>
 
 </body>
 </html>
